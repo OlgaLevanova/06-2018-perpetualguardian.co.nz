@@ -1,0 +1,58 @@
+<div class="container pg-offset-left-lg">
+    <div class="row">
+
+        {% set gridContentText %}
+            <h2>{{ caption }}</h2>
+            <div class="">{{ text }}</div>
+            <a href="{{ url }}">Read more</a>
+        {% endset %}
+
+        {% set gridContentImage %}
+            {% if video != '' %}
+                {% include 'partials/_sib-open-video-button' with {
+                    videoTitle: videoTitle,
+                    video: video
+                } %}
+            {% endif %}
+        {% endset %}
+
+        {# Odd #}
+        {% set orderText = 'col-lg-5 order-lg-1' %}
+        {% set orderImage = 'col-lg-6 order-lg-3' %}
+        {% set sideText = 'left' %}
+        {% set sideImage = 'right' %}
+        {% if loop.index0%2 == 1 %}
+            {# Even #}
+            {% set orderText = 'col-lg-5' %}
+            {% set orderImage = 'col-lg-6' %}
+            {% set sideText = 'right' %}
+            {% set sideImage = 'left' %}
+        {% endif %}
+
+        {% include 'partials/_sib-pg-grid-element' with {
+            gridClasses: orderImage~' sib-generic-listing-feature__image',
+            gridStyle: 'background-image:url("'~entryData.entryExerpt.one.image.one.generalImages.src(2500)~'");',
+            gridSide: sideImage,
+            gridType: 'content',
+            gridColor: '',
+            gridContent: gridContentImage
+        } %}
+
+        {% if sideText == 'right' %}
+            <div class="col-lg-1 background-pg-color-grey"></div>
+        {% endif %}
+
+        {% include 'partials/_sib-pg-grid-element' with {
+            gridClasses: orderText~' sib-generic-listing-feature__text',
+            gridSide: sideText,
+            gridType: 'background',
+            gridColor: 'pg-color-grey',
+            gridContent: gridContentText
+        } %}
+
+        {% if sideText == 'left' %}
+            <div class="col-lg-1 order-lg-2 background-pg-color-grey"></div>
+        {% endif %}
+
+    </div>
+</div>

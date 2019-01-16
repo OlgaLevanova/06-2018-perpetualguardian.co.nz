@@ -1,0 +1,74 @@
+{% set items = {} %}
+{% set categories = entry.newsCategory.all() %}
+
+{% for category in categories %}
+    {# Get news related to category #}
+    {% set item = craft.entries.section('newsPage').relatedTo({
+        targetElement: category,
+        field: 'newsCategory'
+    }).id('not '~entry.id) %}
+
+    {% set items = items|merge(item) %}
+{% endfor %}
+
+{% set itemsCount = items|length  %}
+
+{% if itemsCount > 0 %}
+
+    {% if itemsCount > 3 %}
+        {% set itemsCount = 3  %}
+    {% endif %}
+
+    <section class="sib-news-related background-pg-color-grey">
+
+        <div class="sib-news-related__label background-pg-color-1">
+            You might also like:
+        </div>
+
+        <div class="container">
+            <div class="row">
+                {% set gridContent %}
+                    <div class="row">
+                        {% for i in 0..(itemsCount - 1) %}
+
+                            {% set title = items[i].title %}
+
+                            {% if items[i].entryExerpt.one.caption != '' %}
+                                {% set title = items[i].entryExerpt.one.caption %}
+                            {% endif %}
+
+                            {% set text = items[i].entryExerpt.one.sibText|slice(0, 55)|trim %}
+                            {% if items[i].entryExerpt.one.sibText|length > 55 %}
+                                {% set text = text~'...'%}
+                            {% endif %}
+
+                            {% include 'partials/_sib-news-item' with {
+                                classes: 'col-lg-4 show',
+                                image: items[i].entryExerpt.one.image.one,
+                                url: items[i].url,
+                                video: items[i].entryExerpt.one.video,
+                                videoTitle: items[i].entryExerpt.one.videoTitle,
+                                title: title,
+                                text: text,
+                                date: items[i].postDate|date("d F Y"),
+                                assetSize: '',
+                                assetExt: '',
+                                filterType: 'news',
+                                categories: ''
+                            } %}
+                        {% endfor %}
+                    </div>
+                {% endset %}
+
+                {% include 'partials/_sib-pg-grid-element' with {
+                    gridClasses: 'col-lg-9 offset-lg-3 sib-news-related__list',
+                    gridSide: 'right',
+                    gridType: 'content',
+                    gridColor: '',
+                    gridContent: gridContent
+                } %}
+
+            </div>
+        </div>
+    </section>
+{% endif %}

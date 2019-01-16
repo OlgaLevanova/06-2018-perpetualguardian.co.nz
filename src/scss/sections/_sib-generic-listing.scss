@@ -1,0 +1,13 @@
+.sib-generic-listing__container{
+    display:flex;
+
+    .generic-listing__text{
+        flex:0 0 50%;
+    }
+    .generic-listing__image{
+        flex:0 0 50%;
+        background-position:center center;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+}

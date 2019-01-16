@@ -1,0 +1,119 @@
+<footer class="sib-footer{% if fullWidthBlock == 1 %} sib-footer--no-before{% endif %}">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 sib-footer__info">
+                {% if entry.section.handle == 'homePage' %}
+                    <span>
+                        <img src="/images/logo-line-colored.png" alt="Perpetual Guardian" class="logo-line">
+                    </span>
+                {% else %}
+                    <a href="{{ siteUrl }}">
+                        <img src="/images/logo-line-colored.png" alt="Perpetual Guardian" class="logo-line">
+                    </a>
+                {% endif %}
+
+                <div class="sib-footer__about">
+                    {{ footer.footerText }}
+                </div>
+
+                <ul class="sib-footer__logos">
+                    {% for logo in footer.footerLogos.all() %}
+                        {% if logo.logo %}
+                            <li{% if logo.pgFamily %} class="sib-footer__logos__family"{% endif %}>
+                                {% if logo.sibLink %}
+                                    <a href="{{ logo.sibLink }}" target="_blank">
+                                        <img src="{{ logo.logo.one.url }}" alt="">
+                                    </a>
+                                {% else %}
+                                    <img src="{{ logo.logo.one.url }}" alt="">
+                                {% endif %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-1 sib-footer__gap"></div>
+
+            {% set gridContent %}
+                {# Big menu with submenus #}
+                {% include 'partials/_sib-menu' with {
+                    menu1: footer.footerMenu.all(),
+                    menu1Classes: 'sib-menu-footer',
+                    language: false,
+                    portal: false
+                } %}
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-md-8 sib-footer__menu-complex',
+                gridSide: 'right',
+                gridType: 'background',
+                gridColor: '',
+                gridContent: gridContent
+            } %}
+        </div>
+        <div class="row sib-footer__row2">
+            {% set gridContent %}
+                {{ footer.footerCopyright }}
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-md-3 sib-footer__copyright',
+                gridSide: 'left',
+                gridType: 'content',
+                gridColor: '',
+                gridContent: gridContent
+            } %}
+            {#<div class="sib-footer__copyright">{{ footer.footerCopyright }}</div>#}
+
+            <div class="col-md-1 sib-footer__gap"></div>
+
+            {% set gridContent %}
+                <div class="sib-footer__menus-bottom">
+
+                    {# Side menu button #}
+                    <div class="menus-bottom__side-menu side-menu-trigger">
+                        <button class="icon-menu"></button>
+                    </div>
+
+                    {# Simple menu with only 1 level #}
+                    <ul class="menus-bottom__simple">
+                        {% for link1 in footer.footerBottomMenu.all() %}
+                            <li>
+                                <a href="{{ link1.link1.url }}" {% if link1.link1.target %}target="_blank"{% endif %}>
+                                    {{ link1.link1.text }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    {# Social menu #}
+                    <ul class="menus-bottom__social">
+                        {% for link1 in footer.footerSocialIcons.all() %}
+                            <li>
+                                <a href="{{ link1.link1 }}" target="_blank">
+                                    <span class="{{ link1.icon }}"></span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-md-8 sib-footer__bottom',
+                gridSide: 'right',
+                gridType: 'content',
+                gridColor: '',
+                gridContent: gridContent
+            } %}
+
+            <div class="col-md-3 sib-footer__gap-white">
+
+            </div>
+
+        </div>
+    </div>
+
+</footer>

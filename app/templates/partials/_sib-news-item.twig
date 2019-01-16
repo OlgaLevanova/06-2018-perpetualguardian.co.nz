@@ -1,0 +1,45 @@
+<div class="sib-news-item sib-list-item {{ classes }}" data-categories="{{ categories }}">
+    <a href="{{ url }}" class="sib-news-item__inner">
+
+        {% if image %}
+            {% set image = image.generalImages.src(400) %}
+        {% else %}
+            {% set image = '/images/news-tile-image.jpg' %}
+        {% endif %}
+
+        <div class="sib-news-item__image" style="background-image:url('{{ image }}')">
+            {% if video != '' %}
+                {% include 'partials/_sib-open-video-button' with {
+                    videoTitle: videoTitle,
+                    video: video
+                } %}
+            {% endif %}
+        </div>
+        <div class="sib-news-item__exerpt">
+
+
+            <h2>{{ title|slice(0, 65) ~ (title|length < 65 ? '' : '...')  }}</h2>
+            <div class="sib-news-item__text">
+                {{ text }}
+            </div>
+
+            {% if date %}
+                <div class="sib-news-item__date">
+                    {{ date }}
+                </div>
+            {% endif %}
+
+            {% if assetExt %}
+                <div class="sib-news-item__asset-ext">
+                    <img src="/images/icons/{{ assetExt }}.svg" alt="">
+                </div>
+            {% endif %}
+
+            {% if assetSize %}
+                <div class="sib-news-item__asset-size">
+                    {{ assetSize }}
+                </div>
+            {% endif %}
+        </div>
+    </a>
+</div>

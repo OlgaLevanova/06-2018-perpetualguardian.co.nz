@@ -1,0 +1,90 @@
+.sib-contact {
+    &__mainform{
+        .col-pg-shift{
+            @media (max-width: $container-max-widths-breakpoint) {
+                padding-left:25px;
+            }
+            @media (max-width: $lg-breakpoint) {
+                padding-left:5px;
+            }
+        }
+    }
+    &__header {
+        &:first-child{
+            margin-top: rem(123);
+        }
+        margin-top: rem(77);
+        margin-bottom: rem(20);
+        color: $color-pg-1;
+        font-family: $font-primary-700;
+        font-size: rem(18);
+        &--textarea{
+            margin-top: rem(64);
+        }
+    }
+    &__subheader {
+        margin-bottom: rem(60);
+
+        font-family: $font-primary-700;
+        font-size: rem(18);
+
+        @media (min-width: $md-breakpoint) {
+            margin-bottom: rem(18);
+            font-size: rem(12);
+        }
+    }
+    &__offset-button{
+        .col-pg-shift{
+            display:flex;
+            justify-content: flex-end
+        }
+    }
+}
+
+.sib-datepicker {
+    display:none;
+
+    @media (min-width: $lg-breakpoint) {
+        display:block;
+    }
+
+    &__wrapper{
+        @media (max-width: $lg-breakpoint) {
+            height:0;
+            min-height:0;
+        }
+    }
+    &__title {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        padding: rem(60) rem(40);
+        margin-top: rem(50);
+        margin-bottom: rem(56);
+        margin-left: rem(-15);
+        color: $white;
+        font-family: $font-secondary-400;
+        font-style: italic;
+        background-color: $color-pg-2;
+        &:after{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+            display: block;
+            width: 300%;
+            background: $color-pg-2;
+            content: '';
+
+        }
+    }
+    &__body {
+        padding: 0 rem(25);
+    }
+}
+
+.datepicker.active {
+    @media (min-width: $lg-breakpoint) and (max-width: 1036px) {
+        transform: translateX(-37px);
+    }
+}

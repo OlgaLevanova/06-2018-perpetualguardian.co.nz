@@ -1,0 +1,9 @@
+{% set entry = craft.entries.id('8').one() %}
+
+{% extends "_layout" %}
+
+{% block content %}
+    {% include 'sections/_sib-back-home' with {
+        linkText: 'Back to homepage'
+    } %}
+{% endblock %}

@@ -1,0 +1,194 @@
+.sib-block-loop{
+    position: relative;
+    padding-top:1px;
+    margin-top:-1px;
+
+    section{
+        position:relative;
+        //z-index: 1;
+
+        &:after{
+            @media (min-width: $lg-breakpoint) {
+                position: absolute;
+                bottom: -200px;
+                z-index: -1;
+                height: 200px;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100;White+to+Transparent */
+                /* stylelint-disable */
+                background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                /* stylelint-enable */
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=0); /* IE6-9 */
+            }
+        }
+        &:before{
+            @media (min-width: $lg-breakpoint) {
+                position: absolute;
+                top: -200px;
+                z-index: -1;
+                height: 200px;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100;Transparent+to+WHite */
+                /* stylelint-disable */
+                background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                /* stylelint-enable */
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0); /* IE6-9 */
+            }
+        }
+
+        &.sib-text-block,
+        &.sib-video-block,
+        &.sib-image-block{
+            @media (min-width:$lg-breakpoint) {
+                position:static;
+
+                .background-pg-color-grey,
+                .col-pg-background.col-pg-color-grey{
+                    position:relative;
+                    z-index:4;
+                }
+            }
+        }
+        &.sib-case-study-block{
+            z-index: 5;
+
+            &:before{
+                top: -280px;
+                width: calc(1470px * 0.25);
+                margin-left: calc((100vw - 1470px) / 2);
+                content: "";
+            }
+            &:after{
+                width: calc(1470px * 0.25);
+                margin-left: calc((100vw - 1470px) / 2);
+                content: "";
+            }
+        }
+        &.sib-cta-block{
+            @media (min-width:$lg-breakpoint) {
+                z-index: 3;
+
+                &:before {
+                    top: -200px;
+                    width: calc(1470px * 0.25);
+                    margin-left: calc((100vw - 1470px) / 2);
+                    content: "";
+                }
+                &:after {
+                    width: calc(1470px * 0.25);
+                    margin-left: calc((100vw - 1470px) / 2);
+                    content: "";
+                }
+
+            }
+        }
+        &.sib-resources-block{
+            z-index: 3;
+            &:before{
+                top: -200px;
+                width: calc(1470px * 0.25);
+                margin-left: calc((100vw - 1470px) / 2);
+                content: "";
+            }
+            &:after{
+                width: calc(1470px * 0.25);
+                margin-left: calc((100vw - 1470px) / 2);
+                content: "";
+            }
+
+
+
+        }
+        &.sib-call-us-block{
+            z-index: 3;
+
+            &:before{
+                top: -200px;
+                width: calc(1470px * 0.25);
+                margin-left: calc((100vw - 1470px) / 2);
+                content: "";
+            }
+            &:after{
+                width: calc(1470px * 0.25);
+                margin-left: calc((100vw - 1470px) / 2);
+                content: "";
+            }
+        }
+        &.sib-faq-block{
+            @media (min-width:$lg-breakpoint) {
+                position:static;
+
+                .background-pg-color-grey,
+                .col-pg-background.col-pg-color-grey{
+                    position:relative;
+                    z-index:4;
+                }
+            }
+        }
+        &.sib-map-block{
+            .col-pg-shift{
+                position:relative;
+                z-index:4;
+            }
+        }
+        &.sib-case-study-block,
+        &.sib-call-us-block,
+        &.sib-cta-block,
+        &.sib-resources-block{
+            &:nth-child(2),
+            + .sib-cta-block,
+            + .sib-call-us-block,
+            + .sib-resources-block,
+            + .sib-case-study-block{
+                z-index:5;
+
+                &:before{
+                    display:none;
+                }
+            }
+        }
+        &.sib-links-block{
+            + .sib-case-study-block:before{
+                display:none;
+            }
+        }
+        &.sib-case-study-block,
+        &.sib-cta-block,
+        &.sib-faq-block,
+        &.sib-full-width-image-caption-block,
+        &.sib-map-block,
+        &.sib-call-us-block,
+        &.sib-links-block{
+            + .sib-case-study-block{
+                margin-top:rem(80) !important;
+            }
+        }
+        &:last-child{
+            &:after{
+                display:none;
+            }
+        }
+    }
+
+    .sib-full-width-image-caption-block, .sib-map-block{
+        position:static;
+    }
+
+}
+.sib-sidebar{
+    position: absolute;
+    top: rem(50);
+    z-index: 3;
+    width: 100%;
+
+    &.no-image{
+        top: rem(115);
+    }
+
+    &.fixed{
+        position: fixed;
+        top: rem(150);
+    }
+}

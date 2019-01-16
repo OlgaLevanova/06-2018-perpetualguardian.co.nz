@@ -1,0 +1,44 @@
+        <div class="container sib-branch-accordian__wrapper">
+            <div class="row">
+
+                <div class="offset-lg-3 col-lg-1 background-pg-color-grey"></div>
+
+                {% set gridContent %}
+                    <div class="sib-branch-accordian">
+                        <ul class="sib-branch__list">
+                            {% for city in cities %}
+                                <li class="sib-branch__list__single" data-accordion="container">
+                                    <h3 data-accordion="trigger">
+                                        {{ city.title }}
+                                        <span class="open-submenu icon-arrow-dropdown"></span>
+                                    </h3>
+                                    <div class="sib-branch__content" data-accordion="open">
+                                        <div id="address{{ loop.index0 }}">
+                                            {{ city.address|nl2br }}
+                                        </div>
+                                        <div>
+                                            {{ city.poBoxAddress|nl2br }}
+                                        </div>
+                                        <div>
+                                            {% if city.phone != '' %}Ph {{ city.phone }}</br>{% endif %}
+                                            {% if city.email != '' %}<a href="mailto:{{ city.email }}"> {{ city.email }}</a></br>{% endif %}
+                                            {% if city.fax != '' %}Fax {{ city.fax }}</br>{% endif %}
+                                        </div>
+
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endset %}
+
+                {% include 'partials/_sib-pg-grid-element' with {
+                    gridClasses: 'col-lg-8',
+                    gridSide: 'right',
+                    gridType: 'content',
+                    gridColor: 'pg-color-grey',
+                    gridContent: gridContent
+                } %}
+
+            </div>
+        </div>

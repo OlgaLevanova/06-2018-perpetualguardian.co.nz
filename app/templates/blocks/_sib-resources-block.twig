@@ -1,0 +1,95 @@
+{% set items = block.resources.all() %}
+{% set itemsCount = items|length %}
+
+{% if (itemsCount == 1 and items[0].resourceFile) or itemsCount > 1 %}
+    <section class="sib-resources-block">
+        <div class="sib-resources-block__label">
+            <div class="container">
+                <div class="row">
+
+                    {% set gridContent %}
+                        <div class="sib-resources-block__title">{{ block.sibTitle }}</div>
+                        <div class="sib-resources-block__text">
+                            {{ block.sibText }}
+                        </div>
+                        <a href="{{ craft.entries.id(243).one.url }}">More resources</a>
+                    {% endset %}
+
+                    {% include 'partials/_sib-pg-grid-element' with {
+                        gridClasses: 'col-lg-5',
+                        gridSide: 'left',
+                        gridType: 'background',
+                        gridColor: 'pg-color-1',
+                        gridContent: gridContent
+                    } %}
+
+                    <div class="col-lg-1 background-pg-color-1"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container sib-resources-block__list">
+            <div class="row">
+                <div class="col-lg-2 col-lg-2"></div>
+                <div class="col-lg-3"></div>
+                    {% for i in 0..(itemsCount - 1) %}
+
+                        {% if items[i].resourceFile %}
+
+                            {% if i%3 == 2 %}
+                                <div class="col-lg-2"></div>
+                            {% endif %}
+
+                            {% set image = items[i].resourceFile.one %}
+                            {% set resource = image %}
+                            {% set assetExt = image.extension %}
+
+                            {% set videoExtArr = ['mp4', 'm4a', 'm4v', 'f4v', 'f4a', 'm4b', 'm4r', 'f4b', 'mov', 'wmv', 'wma', 'webm', 'avi', 'mpeg'] %}
+                            {% if assetExt != 'pdf' %}
+
+                                {% if assetExt in videoExtArr|values %}
+                                    {% set assetExt = 'video' %}
+                                {% else %}
+                                    {% set assetExt = 'doc' %}
+                                {% endif %}
+
+                            {% endif %}
+
+                            {% if assetExt != 'jpg' and assetExt != 'jpeg' and assetExt != 'png' and assetExt != 'gif' %}
+                                {% set image = items[i].excerptImage.one %}
+                            {% endif %}
+
+                            {# Asset's size #}
+                            {% set assetSize = '' %}
+                            {% set bytes = resource.size %}
+                            {% set kiloBytes = (bytes / 1024)|round(2) %}
+                            {% set megaBytes = (kiloBytes / 1024)|round(2) %}
+                            {% if megaBytes > 1 %}
+                                {% set assetSize = megaBytes~'Mb' %}
+                            {% elseif kiloBytes > 1 %}
+                                {% set assetSize = kiloBytes~'Kb' %}
+                            {% else %}
+                                {% set assetSize = bytes~'b' %}
+                            {% endif %}
+
+                            {% include 'partials/_sib-news-item' with {
+                                classes: 'col-lg-3 show',
+                                image: image,
+                                url: resource.url,
+                                video: '',
+                                videoTitle: '',
+                                title: items[i].title,
+                                text: '',
+                                date: '',
+                                assetSize: assetSize,
+                                assetExt: assetExt,
+                                filterType: 'news',
+                                categories: ''
+                            } %}
+                        {% endif %}
+                    {% endfor %}
+
+            </div>
+        </div>
+    </section>
+{% endif %}

@@ -1,0 +1,21 @@
+<section class="sib-load-more">
+    <div class="container">
+        <div class="row">
+
+            {% set gridContent %}
+                <button id="sib-load-more__button">
+                    Load more
+                    <span class="icon-arrow-down"></span>
+                </button>
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-md-3',
+                gridSide: 'left',
+                gridType: 'content',
+                gridColor: 'pg-color-2',
+                gridContent: gridContent
+            } %}
+        </div>
+    </div>
+</section>

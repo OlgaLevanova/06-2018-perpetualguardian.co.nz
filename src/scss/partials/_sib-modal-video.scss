@@ -1,0 +1,46 @@
+.mfp-container{
+    padding-right:rem(10);
+    padding-left:rem(10);
+}
+.mfp-content{
+    margin-top:rem(-40);
+
+    &.mfp-content--no-title{
+        margin-top:0;
+
+        .mfp-title{
+            display:none;
+        }
+    }
+}
+.mfp-title{
+    position:absolute;
+    top:100%;
+    width:100%;
+    padding:rem(30) rem(38) rem(33);
+    color:$white;
+    font-family:$font-primary-300;
+    font-size:rem(14);
+    line-height:1.71;
+    background:$greeny-blue;
+
+    @media (min-width: $lg-breakpoint){
+        width:50%;
+    }
+}
+.mfp-iframe-holder .mfp-close{
+    position:fixed;
+    top:0;
+    right:0;
+    width:rem(80);
+    height:rem(80);
+    padding:0;
+    text-align:center;
+    background:$orangey-yellow;
+    opacity:1;
+
+    @media (min-width: $lg-breakpoint){
+        position:absolute;
+        top:rem(-80);
+    }
+}

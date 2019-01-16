@@ -1,0 +1,11 @@
+<ul class="faq__list{% if allFAQ %} faq__list--all-faq{% endif %}" data-faq="id-{{ dataFaq }}">
+    {% for faq in faqList %}
+        <li class="faq__list__single" data-accordion="container">
+            <h3 data-accordion="trigger">
+                {{ faq.title }}
+                <span class="open-submenu icon-arrow-dropdown"></span>
+            </h3>
+            <div data-accordion="open">{{ faq.sibText }}</div>
+        </li>
+    {% endfor %}
+</ul>

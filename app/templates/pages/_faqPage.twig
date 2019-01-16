@@ -1,0 +1,12 @@
+{% set faqAll = craft.entries.section('faqPage').one() %}
+{% set faqCategories = faqAll.children().level(2).all() %}
+
+{# FAQ filter #}
+{% include 'partials/_sib-filter' with {
+    items: faqCategories,
+    gridClasses: 'col-lg-6 col-xl-3',
+    buttonClasses: 'col-md-6',
+    filterType: 'scroll'
+} %}
+
+{% include 'sections/_sib-faq-all' %}

@@ -1,0 +1,17 @@
+<div class="col-lg-4 col-md-6 sib-list-item">
+    <div class="generic-listing__image" style="background-image:url('{{ image }}');">
+        {% if video != '' %}
+            {% include 'partials/_sib-open-video-button' with {
+                videoTitle: videoTitle,
+                video: video
+            } %}
+        {% endif %}
+    </div>
+    <a href="{{ url }}" class="generic-listing__text background-{{ color }}">
+        <div class="generic-listing-col">
+            <h2>{{ caption }}</h2>
+            <span class="read-more">Read more</span>
+            <span class="icon-arrow-down"></span>
+        </div>
+    </a>
+</div>

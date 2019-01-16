@@ -1,0 +1,61 @@
+{% if entry.listingEntries is not null %}
+    {% set allEntries = entry.listingEntries.all() %}
+    {% set generalEntries = [] %}
+    {% set featuredEntries = [] %}
+
+    {# Separate featured and general entries #}
+    {% for singleEntry in allEntries %}
+        {% if singleEntry.featuredEntry %}
+            {% set featuredEntries = featuredEntries|merge([singleEntry]) %}
+        {% else %}
+            {% set generalEntries = generalEntries|merge([singleEntry]) %}
+        {% endif %}
+    {% endfor %}
+
+    {# Get all featured entries first #}
+    <section class="sib-generic-listing-featured">
+        {% for singleEntry in featuredEntries %}
+            {% set entryData = singleEntry.listingEntry.one %}
+
+            {% if entryData.entryExerpt is not null %}
+                {% if entryData.entryExerpt.one.image.one %}
+                    {% include 'partials/_sib-generic-listing-featured' with {
+                        caption:entryData.entryExerpt.one.caption,
+                        text:entryData.entryExerpt.one.sibText,
+                        image:entryData.entryExerpt.one.image.one.url,
+                        video:entryData.entryExerpt.one.video,
+                        videoTitle:entryData.entryExerpt.one.videoTitle,
+                        url:entryData.url
+                    } %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </section>
+
+    {# Get all general entries #}
+    <section class="sib-generic-listing">
+        <div class="container-fluid">
+            <div class="row" data-list-items-container="9">
+                {% for singleEntry in generalEntries %}
+                    {% set entryData = singleEntry.listingEntry.one %}
+
+                    {% if entryData.entryExerpt is not null %}
+                        {% if entryData.entryExerpt.one.image.one and entryData.entryExerpt.one.tileColor.one %}
+                            {% include 'partials/_sib-generic-listing' with {
+                                caption:entryData.entryExerpt.one.caption,
+                                image:entryData.entryExerpt.one.image.one.url,
+                                video:entryData.entryExerpt.one.video,
+                                videoTitle:entryData.entryExerpt.one.videoTitle,
+                                url:entryData.url,
+                                color:entryData.entryExerpt.one.tileColor.one.colorClass
+                            } %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {# Button load more #}
+    {% include 'sections/_sib-load-more' %}
+{% endif %}

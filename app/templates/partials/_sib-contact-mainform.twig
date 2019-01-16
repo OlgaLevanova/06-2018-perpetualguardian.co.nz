@@ -1,0 +1,112 @@
+
+<div class="sib-contact__header">Your details</div>
+<div class="sib-form-group {% if 'formFirstName' in formErrors|keys %}sib-form-error{% endif %}">
+    <input type="text"
+           name="fields[formFirstName]"
+           placeholder="First name"
+           class="sib-form__input-text required"
+           value="{{ guestFormErrors is defined ? guestFormErrors.formFirstName : '' }}"
+           maxlength="50"
+    />
+</div>
+<div class="sib-form-group {% if 'formLastName' in formErrors|keys %}sib-form-error{% endif %}">
+    <input type="text"
+           name="fields[formLastName]"
+           placeholder="Last name"
+           class="sib-form__input-text required"
+           value="{{ guestFormErrors is defined ? guestFormErrors.formLastName : '' }}"
+           maxlength="50"
+    />
+</div>
+<div class="sib-form-group {% if 'formEmail' in formErrors|keys %}sib-form-error{% endif %}">
+    <input type="email"
+           name="fields[formEmail]"
+           placeholder="Email"
+           class="sib-form__input-text required required-email"
+           value="{{ guestFormErrors is defined ? guestFormErrors.formEmail : '' }}"
+           maxlength="100"
+    />
+</div>
+<div class="sib-form-group {% if 'formMobile' in formErrors|keys %}sib-form-error{% endif %}">
+    <input type="text"
+           name="fields[formMobile]"
+           placeholder="Mobile phone"
+           class="sib-form__input-text required"
+           value="{{ guestFormErrors is defined ? guestFormErrors.formMobile : '' }}"
+           maxlength="100"
+    />
+</div>
+<div class="sib-form-group {% if 'formPhone' in formErrors|keys %}sib-form-error{% endif %}">
+    <input type="text"
+           name="fields[formPhone]"
+           placeholder="Home phone (optional)"
+           class="sib-form__input-text required"
+           value="{{ guestFormErrors is defined ? guestFormErrors.formPhone : '' }}"
+           maxlength="100"
+    />
+</div>
+<div class="sib-form-group">
+    <select name="fields[formRegion]" class="sib-form__select required">
+        <option value="">Select...</option>
+        <option value="estatePlanningServicesQuery">Estate Planning Services Query</option>
+        <option value="philanthropyQuery">Philanthropy Query</option>
+        <option value="investmentAdvisoryQuery">Investment Advisory Query</option>
+        <option value="generalEnquiry">General Enquiry</option>
+    </select>
+</div>
+<div class="sib-contact__header">What would you like to learn more about? (optional)</div>
+<div class="sib-form-group form-group-interests">
+    <div class="sib-form-group-interest">
+        <input type="checkbox" name="fields[formInterests][]" value="estatePlanningServices" id="formEstatePlanningServices">
+        <label for="formEstatePlanningServices" class="sib-checkbox">
+            Estate Planning Services
+        </label>
+    </div>
+    <div class="sib-form-group-interest">
+        <input type="checkbox" name="fields[formInterests][]" value="philanthropy" id="formPhilanthropy">
+        <label for="formPhilanthropy" class="sib-checkbox">
+            Philanthropy
+        </label>
+    </div>
+    <div class="sib-form-group-interest">
+        <input type="checkbox" name="fields[formInterests][]" value="investmentAdvisory" id="formInvestmentAdvisory">
+        <label for="formInvestmentAdvisory" class="sib-checkbox">
+            Investment Advisory
+        </label>
+    </div>
+    <div class="sib-form-group-interest">
+        <input type="checkbox" name="fields[formInterests][]" value="iDontNeedMoreInformation" id="formIDontNeedMoreInformation">
+        <label for="formIDontNeedMoreInformation" class="sib-checkbox">
+            I don't need more information
+        </label>
+    </div>
+</div>
+<div class="sib-contact__header sib-contact__header--textarea">Your comments</div>
+<div class="sib-form-group {% if 'formMessage' in formErrors|keys %}sib-form-error{% endif %}">
+
+                        <textarea class="sib-form__textarea required"
+                                  name="fields[formMessage]" rows="10"
+                                  placeholder="Text">{{ guestFormErrors is defined ? guestFormErrors.formMessage : '' }}</textarea>
+</div>
+<div class="sib-contact__header">Marketing communication (optional)</div>
+<div class="sib-contact__subheader">Yes, I have read the Privacy Policy and would like to receive marketing
+    communications from Perpetual Guardian
+    via:
+</div>
+<div class="sib-form-group form-group-comms">
+    <div class="form-group-comm">
+        <input type="checkbox" name="fields[formComms][]" value="email" id="formEmailing">
+        <label for="formEmailing" class="sib-checkbox">
+            Email
+        </label>
+    </div>
+    <div class="form-group-comm">
+        <input type="checkbox" name="fields[formComms][]" value="post" id="formPost">
+        <label for="formPost" class="sib-checkbox">
+            Post
+        </label>
+    </div>
+
+</div> <div class="sib-form-group">
+    <div class="g-recaptcha required required-recaptcha" id="_recaptcha-contact"></div>
+</div>

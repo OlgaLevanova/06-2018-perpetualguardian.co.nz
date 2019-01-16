@@ -1,0 +1,43 @@
+<section class="sib-block-loop">
+    {% include 'partials/_sib-sidebar' %}
+    {% for block in blocks %}
+        {% switch block.type %}
+            {% case "map" %}
+                {% include 'blocks/_sib-map-block' %}
+
+            {% case "resources" %}
+                {% include 'blocks/_sib-resources-block' %}
+
+            {% case "fullWidthImageCaption" %}
+                {% include 'blocks/_sib-full-width-image-caption-block' %}
+
+            {% case "caseStudy" %}
+                {% include 'blocks/_sib-case-study-block' %}
+
+            {% case "cta" %}
+                {% include 'blocks/_sib-cta-block' %}
+
+            {% case "callUs" %}
+                {% if block.useGlobalCallUsBlock %}{% set block = callUs %}{% endif %}
+                {% include 'blocks/_sib-call-us-block' %}
+
+            {% case "video" %}
+                {% include 'blocks/_sib-video-block' %}
+
+            {% case "textBlock" %}
+                {% include 'blocks/_sib-text-block' %}
+
+            {% case "image" %}
+                {% include 'blocks/_sib-image-block' %}
+
+            {% case "faq" %}
+                {% include 'blocks/_sib-faq-block' %}
+
+            {% case "links" %}
+                {% include 'blocks/_sib-links-block' %}
+
+            {% case "trustGuardQuestionaire" %}
+                {% include 'blocks/_sib-trust-questions-block' %}
+        {% endswitch %}
+    {% endfor %}
+</section>

@@ -1,0 +1,46 @@
+<section class="sib-links-blocks">
+    <div class="container-fluid">
+        <div class="row">
+            {% for i in 0..(entry.linksBlocks|length - 1) %}
+                <div class="sib-links-blocks__image" style="background-image:url('{{ slides[i].image.one.url }}')">
+                    <div class="sib-links-blocks__text-mobile background-{{ entry.linksBlocks[i].colourOfTheBlock.one.colorClass }}">
+                        <div>
+                            {{ slides[i].sibText }}
+                        </div>
+                        <a href="{{ slides[i].sibLink.url }}">
+                            {{ slides[i].sibLink.text }}
+
+                            <span class="icon-arrow-down"></span>
+                        </a>
+                    </div>
+                </div>
+                <div
+                        class="col-md-4 sib-links-blocks__item background-{{ entry.linksBlocks[i].colourOfTheBlock.one.colorClass }}"
+                >
+                    <h2>{{ entry.linksBlocks[i].sibTitle }}</h2>
+                    <div class="sib-links-blocks__text">
+                        {{ entry.linksBlocks[i].sibText }}
+                    </div>
+                    <ul>
+                        {% for link in entry.linksBlocks[i].links.all() %}
+                            <li>
+                                <a href="{{ link.sibLink.url }}">
+                                    {{ link.sibLink.text }}
+
+                                    <span class="icon-arrow-down"></span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="sib-links-blocks__button">
+                        <a href="{{ entry.linksBlocks[i].button.url }}">
+                            {{ entry.linksBlocks[i].button.text }}
+
+                            <span class="icon-arrow-down"></span>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

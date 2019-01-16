@@ -1,0 +1,55 @@
+{# Slider of Featured News #}
+<section class="sib-news-list-featured">
+    <div class="sib-news-list__slider">
+        {% for item in items.all() %}
+
+            {% set image = '/images/m42.jpg' %}
+            {% if item.entryExerpt.one.image.one %}
+                {% set image = item.entryExerpt.one.image.one.generalImages.src(2500) %}
+            {% endif %}
+
+            {# News categories #}
+            {% set categories = '_' %}
+            {% set categoriesClasses = ' ' %}
+            {% for category in item.newsCategory.all() %}
+                {% set categories = categories~category.id~'_' %}
+                {% set categoriesClasses = categoriesClasses~'category-'~category.id~' ' %}
+            {% endfor %}
+
+            {% if item.newsFeatured %}
+                <div class="sib-news-list__slide container-fluid background-pg-color-grey{{ categoriesClasses }}" data-categories="{{ categories }}">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 order-md-2 sib-news-list__slider__image" style="background-image:url('{{ image }}')">
+                            {% if item.entryExerpt.one.video != '' %}
+                                {% include 'partials/_sib-open-video-button' with {
+                                    videoTitle: item.entryExerpt.one.videoTitle,
+                                    video: item.entryExerpt.one.video
+                                } %}
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 order-md-1">
+                            <div class="sib-news-list__slider__info">
+                                <div class="sib-news-list__slider__date">
+                                    {{ item.postDate|date("d F Y") }}
+                                </div>
+                                <h2>
+                                    {% if item.entryExerpt.one.caption != '' %}
+                                        {{ item.entryExerpt.one.caption }}
+                                    {% else %}
+                                        {{ item.title }}
+                                    {% endif %}
+                                </h2>
+                                <div class="sib-news-list__slider__text">
+                                    {{ item.entryExerpt.one.sibText }}
+                                </div>
+                                <div class="sib-news-list__slider__read-more">
+                                    <a href="{{ item.url }}">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>

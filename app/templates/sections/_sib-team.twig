@@ -1,0 +1,50 @@
+<section class="sib-team">
+
+    {% for teamPosition in teamPositions %}
+        <h1
+            class="sib-team__title"
+            data-anchor="{{ teamPosition.title }}"
+            data-scroll-block="{{ loop.index0 }}"
+        >
+            {{ teamPosition.title }}
+        </h1>
+        <ul class="sib-team__people">
+            {% for person in teamPosition.children().level(3).all() %}
+
+                <li
+                        class="sib-overlay__toggle"
+                        data-type="contact-team"
+                        data-target="sib-overlay--contact-team"
+                >
+                    <div class="sib-team__person__img"
+                         style="background-image: url('{{ person.image.one ? person.image.one.generalImages.src(600) : '/images/m42.jpg' }}')"></div>
+
+                    <div class="sib-team__person__content">
+                        <h2>{{ person.title }}</h2>
+                        <div class="sib-team__person__subtitle">
+                            {{ person.position }}
+                        </div>
+                        <div class="sib-team__person__description">
+                            {{ person.sibText|striptags|raw|slice(0, 150) ~ (person.sibText|length < 150 ? '' : '...')  }}
+                        </div>
+                        <button class="sib-team__person__button">
+                            Read more
+                        </button>
+                        <div class="sib-team__details">
+                            <div class="sib-team__vcard">{% if (person.vCard[0] is defined ) %} {{  person.vCard[0].url }} {%  endif %}</div>
+                            <div class="sib-team__email">{{ person.personEmail }}</div>
+                            <div class="sib-team__title">{{ person.title }}</div>
+                            <div class="sib-team__position">{{ person.position }}</div>
+                            <div class="sib-team__location">{{ person.location }}</div>
+                            <div class="sib-team__number">{{ person.number }}</div>
+                            <div class="sib-team__linkedin">{{ person.linkedin }}</div>
+                            <div class="sib-team__content">{{ person.sibText }}</div>
+                            <div class="sib-team__image">{{ person.image.one ? person.image.one.generalImages.src(600) : '/images/m42.jpg' }}</div>
+                        </div>
+                    </div>
+                </li>
+
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</section>

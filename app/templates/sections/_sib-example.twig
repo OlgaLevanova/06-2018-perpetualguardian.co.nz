@@ -1,0 +1,169 @@
+
+<br><br>
+<h3>Commmon container</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-3" style="background:#f00">
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.
+        </div>
+        <div class="col-9" style="background:#0f0">
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<h3>Container with content starts from left edge</h3>
+<div class="container">
+    <div class="row">
+
+        {% set gridContent %}
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology
+            immersion along the information highway will close the loop on focusing solely on the
+            bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.
+        {% endset %}
+
+        {% include 'partials/_sib-pg-grid-element' with {
+            gridClasses: 'col-md-3',
+            gridSide: 'left',
+            gridType: 'content',
+            gridColor: 'pg-color-1',
+            gridContent: gridContent
+        } %}
+
+        <div class="col-md-9">
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion
+            along the information highway will close the loop on focusing solely on the bottom line. Capitalize
+            on low hanging fruit to identify a ballpark value added activity to beta test.
+        </div>
+    </div>
+</div>
+
+<br><br>
+<h3>Container with content starts from right edge</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.
+        </div>
+
+        {% set gridContent %}
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology
+            immersion along the information highway will close the loop on focusing solely on the
+            bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.
+        {% endset %}
+
+        {% include 'partials/_sib-pg-grid-element' with {
+            gridClasses: 'col-md-9',
+            gridSide: 'right',
+            gridType: 'content',
+            gridColor: 'pg-color-1',
+            gridContent: gridContent
+        } %}
+
+    </div>
+</div>
+
+<br><br>
+<h3>Container with background starts from right edge</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.
+        </div>
+
+        {% set gridContent %}
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology
+            immersion along the information highway will close the loop on focusing solely on the
+            bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.
+        {% endset %}
+
+        {% include 'partials/_sib-pg-grid-element' with {
+            gridClasses: 'col-md-9',
+            gridSide: 'right',
+            gridType: 'background',
+            gridColor: 'pg-color-1',
+            gridContent: gridContent
+        } %}
+
+    </div>
+</div>
+
+<br><br>
+<h3>Container with background starts from left edge</h3>
+<div class="container">
+    <div class="row">
+
+        {% set gridContent %}
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology
+            immersion along the information highway will close the loop on focusing solely on the
+            bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.
+        {% endset %}
+
+        {% include 'partials/_sib-pg-grid-element' with {
+            gridClasses: 'col-md-3',
+            gridSide: 'left',
+            gridType: 'background',
+            gridColor: 'pg-color-1',
+            gridContent: gridContent
+        } %}
+
+        <div class="col-md-9">
+
+            2. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.
+
+        </div>
+    </div>
+</div>
+
+<br><br>
+<h3>Container with background image as content starts from edge. Add pg-no-gaps class to container</h3>
+<div class="container pg-offset-left-lg pg-no-gaps">
+    <div class="row">
+
+        {% set gridContent %}
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology
+            immersion along the information highway will close the loop on focusing solely on the
+            bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.<br>
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology
+            immersion along the information highway will close the loop on focusing solely on the
+            bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.<br>
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology
+            immersion along the information highway will close the loop on focusing solely on the
+            bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.<br>
+        {% endset %}
+
+        {% include 'partials/_sib-pg-grid-element' with {
+            gridClasses: 'col-lg-9 offset-lg-3',
+            gridSide: 'right',
+            gridType: 'content',
+            gridColor: 'pg-color-2',
+            gridStyle: "background:url('/assets/Kea-Home-Page-Experience-800x800-768x768.jpg') no-repeat center center; background-size:cover;",
+            gridContent: gridContent
+        } %}
+
+    </div>
+</div>
+
+<br><br>
+<h3>Container with background starts from right/left edge on big screen, and there is gap on left/right on small screen </h3>
+<div class="container pg-offset-left-lg">
+    <div class="row">
+
+        {% set gridContent %}
+            Override the digital divide with additional clickthroughs from DevOps. Nanotechnology
+            immersion along the information highway will close the loop on focusing solely on the
+            bottom line. Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.
+        {% endset %}
+
+        {% include 'partials/_sib-pg-grid-element' with {
+            gridClasses: 'col-lg-9 offset-lg-3',
+            gridSide: 'right',
+            gridType: 'background',
+            gridColor: 'pg-color-3',
+            gridContent: gridContent
+        } %}
+
+    </div>
+</div>

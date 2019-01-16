@@ -1,0 +1,16 @@
+<aside>
+    <div class="sib-aside-nav__call">
+        <div class="call__button">
+            <button class="icon-phone"></button>
+        </div>
+        <div class="call__text">Call us on 0800 87 87 82</div>
+    </div>
+    <div class="sib-aside-nav__menu">
+        {% include 'partials/_sib-menu' with {
+            menu1: topMenu.topMenu.all(),
+            menu1Classes: 'sib-aside-menu',
+            language: false,
+            portal: true
+        } %}
+    </div>
+</aside>

@@ -1,0 +1,48 @@
+.sib-back-home{
+    .row{
+        @media all and (max-width:$md-breakpoint){
+            margin-right:5px !important;
+        }
+    }
+    .sib-back-home__link{
+        padding:0 rem(30) !important;
+        /*padding:0 rem(15) !important;
+
+        @media all and (min-width:$lg-breakpoint){
+            padding:0 rem(30) !important;
+        }*/
+    }
+    a{
+        display:block;
+        padding:rem(27) 0 rem(27) rem(20);
+        color:$white;
+        font-family:$font-secondary-900-italic;
+        font-size:rem(16);
+        font-style:italic;
+        text-align:right;
+        transition:all 0.2s;
+
+        &:hover{
+            padding-right:rem(10);
+            text-decoration:none;
+
+            &:before{
+                left:rem(-13);
+            }
+        }
+        &:before{
+            @include icomoon;
+
+            position:absolute;
+            top:50%;
+            left:rem(-6);
+            display:block;
+            width:rem(12);
+            height:rem(12);
+            font-size:rem(12);
+            content:'\e900';
+            transform:translateY(-50%) rotate(90deg);
+            transition:all 0.2s;
+        }
+    }
+}

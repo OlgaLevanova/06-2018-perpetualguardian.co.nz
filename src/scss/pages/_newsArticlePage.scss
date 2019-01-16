@@ -1,0 +1,130 @@
+.sib-news {
+    &__back-button {
+        padding: 0 rem(30) !important;
+        margin-right: rem(20);
+        background-color: $color-pg-1;
+        @media (min-width: $md-breakpoint) {
+            margin-right: 0;
+        }
+        &:hover {
+            padding-right: rem(10);
+            text-decoration: none;
+
+            &:before {
+                left: rem(10);
+            }
+        }
+        &:before {
+            @include icomoon;
+
+            position: absolute;
+            top: 50%;
+            left: rem(15);
+            display: block;
+            width: rem(12);
+            height: rem(12);
+            color: $white;
+            font-size: rem(12);
+            content: '\e900';
+            transform: translateY(-50%) rotate(90deg);
+            transition: all 0.2s;
+        }
+        a {
+            z-index: 999;
+            display: block;
+            padding: rem(27) 0;
+            color: $white;
+            font-family: $font-secondary-900-italic;
+            font-size: rem(16);
+            font-style:italic;
+            text-align: right;
+            text-decoration: none;
+            background-color: transparent;
+            transition: all 0.2s;
+        }
+
+        &:hover {
+            color: $white;
+            text-decoration: none;
+            background-color: darken($color-pg-1, 10%)
+        }
+        @media (min-width: $xl-breakpoint) {
+
+            padding: 0 rem(40) 0 rem(20);
+        }
+
+    }
+    &__image {
+        position: relative;
+        width: 100%;
+        height: rem(600);
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+    &__social-wrapper--top{
+        .sib-news__social{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: calc(100% - 20px);
+
+            @media (min-width: $lg-breakpoint) {
+                width: rem(295);
+            }
+        }
+    }
+    &__social-wrapper--bottom{
+
+        /*@media (max-width:$lg-breakpoint){
+            padding:0 rem(20);
+        }*/
+        background: $white;
+        z-index: 12;
+        position: relative;
+        [class^="col"],
+        [class*=" col"]{
+            padding-right:0 !important;
+            padding-left:0 !important;
+        }
+        .sib-news__social{
+            width:calc(100% - 40px);
+            margin-left:rem(20);
+
+            @media (min-width: $lg-breakpoint) {
+                width:100%;
+                margin-left:0;
+            }
+        }
+    }
+    &__social {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width:100%;
+        height: rem(80);
+        padding-right:9px;
+        padding-left:20px;
+        color: $white;
+        font-family: $font-secondary-900-italic;
+        font-size: rem(16);
+        font-style:italic;
+        background-color: $color-pg-2;
+
+        @media (min-width: $lg-breakpoint) {
+            padding-right:13px;
+        }
+
+        a .at-icon-wrapper,
+        svg {
+            width:30px !important;
+            height:30px !important;
+        }
+        .at-style-responsive {
+            .at-share-btn{
+                padding:0 3px !important;
+            }
+        }
+
+    }
+}

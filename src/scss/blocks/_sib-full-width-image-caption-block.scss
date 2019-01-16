@@ -1,0 +1,46 @@
+.sib-full-width-image-caption-block{
+    .row{
+        position:relative !important;
+        z-index:4; // because side-bar has z-index:3
+    }
+    .col-md-6{
+        @media (max-width:$md-breakpoint){
+            padding-left:0 !important;
+        }
+    }
+    .col-pg-content{
+        position:static !important;
+
+        @media (max-width:$md-breakpoint){
+            padding-left:$grid-container-gutter-width-sm;
+        }
+    }
+    .col-pg-shift{
+        position:static !important;
+        padding:0 !important;
+        background-position:center center;
+        background-repeat:no-repeat;
+        background-size:cover;
+
+        .caption{
+            height:rem(400);
+
+            @media (min-width:$md-breakpoint){
+                height:rem(700);
+            }
+        }
+    }
+    .sib-overlay-block{
+        .sib-overlay-block__text{
+            bottom:0;
+            margin-top:rem(-40);
+
+            @media (min-width:$lg-breakpoint){
+                margin-top:0;
+            }
+        }
+        @media (min-width:$xxl-breakpoint){
+            left: calc(25% - 40px);
+        }
+    }
+}

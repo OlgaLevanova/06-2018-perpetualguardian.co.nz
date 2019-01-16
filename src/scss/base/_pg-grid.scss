@@ -1,0 +1,236 @@
+
+/* Use these styles for blocks which start from left/right edge of the screen,
+ but must be in bootstrap grid
+ */
+
+/* .col-pg-content - Blocks where content starts from edge */
+/* .col-pg-background - Block where only background starts form edge */
+#main-wrapper .container{
+    max-width:rem(1470) ;
+}
+#main-wrapper .container,
+#main-wrapper .container-fluid{
+    >.row{
+        >[class^="col"], [class*=" col"]{
+            &:first-child{
+                padding-left:40px;
+
+                @media (max-width:$container-max-widths-breakpoint){
+                    padding-left:40px;
+                }
+                @media (max-width:($lg-breakpoint - 1px)){
+                    padding-left:20px;
+                }
+                @media (max-width:$md-breakpoint){
+                    padding-right:20px;
+                }
+            }
+            &:last-child{
+                padding-right:40px;
+
+                @media (max-width:$container-max-widths-breakpoint){
+                    padding-right:40px;
+                }
+                @media (max-width:($lg-breakpoint - 1px)){
+                    padding-right:20px;
+                }
+                @media (max-width:$md-breakpoint){
+                    padding-left:20px;
+                }
+            }
+        }
+    }
+}
+
+.pg-fluid-grid{
+    .pg-fluid-grid__text{
+        position:relative;
+        z-index:5;
+        width:100%;
+
+        @media (min-width:$md-breakpoint) {
+            position:absolute;
+            right:0;
+        }
+    }
+}
+
+/* Offset on small screen */
+[class^="pg-offset"], [class*=" pg-offset"]{
+    width: calc(100% - #{$grid-container-gutter-width-sm});
+}
+[class^="pg-offset-left"], [class*=" pg-offset-left"]{
+    margin-left: $grid-container-gutter-width-sm;
+}
+[class^="pg-offset-right"], [class*=" pg-offset-right"]{
+    margin-right: $grid-container-gutter-width-sm;
+}
+.pg-offset-{
+    &left-lg {
+        @media (min-width: $lg-breakpoint) {
+            width: 100%;
+            margin-left: auto;
+        }
+    }
+    &left-md {
+        @media (min-width: $md-breakpoint) {
+            width: 100%;
+            margin-left: auto;
+        }
+    }
+    &right-lg {
+        @media (min-width: $lg-breakpoint) {
+            width: 100%;
+            margin-right: auto;
+        }
+    }
+    &right-md {
+        @media (min-width: $md-breakpoint) {
+            width: 100%;
+            margin-right: auto;
+        }
+    }
+}
+.col-pg-no-padding{
+    padding-right:0 !important;
+    padding-left:0 !important;
+}
+.pg-no-gaps{
+    >.row{
+        [class^="col"], [class*=" col"]{
+            padding-right:0 !important;
+            padding-left:0 !important;
+        }
+    }
+}
+
+.col-pg-content,
+.col-pg-background{
+    position:relative;
+
+    &:before{
+        position:absolute;
+        top:0;
+        bottom:0;
+        z-index:1;
+        display:block;
+        width:500%;
+        content:'';
+    }
+
+    &.col-pg-left{
+        &:before{
+            right:100%;
+        }
+    }
+    &.col-pg-right{
+        &:before{
+            left:100%;
+        }
+
+        &[class^="col-md-"]{
+            &:before{
+                left:-100%;
+
+                @media (min-width:$md-breakpoint){
+                    left:100%;
+                }
+            }
+        }
+    }
+    &.col-pg-color-1{
+        background:$color-pg-1;
+
+        &:before{
+            background:$color-pg-1;
+        }
+
+        .col-pg-shift{
+            background:$color-pg-1;
+
+            &:before{
+                background:$color-pg-1;
+            }
+        }
+    }
+    &.col-pg-color-2{
+        background:$color-pg-2;
+
+        &:before{
+            background:$color-pg-2;
+        }
+
+        .col-pg-shift{
+            background:$color-pg-2;
+
+            &:before{
+                background:$color-pg-2;
+            }
+        }
+    }
+    &.col-pg-color-3{
+        background:$color-pg-3;
+
+        &:before{
+            background:$color-pg-3;
+        }
+
+        .col-pg-shift{
+            background:$color-pg-3;
+
+            &:before{
+                background:$color-pg-3;
+            }
+        }
+    }
+    &.col-pg-color-grey{
+        background:$grey-2;
+
+        &:before{
+            background:$grey-2;
+        }
+
+        .col-pg-shift{
+            background:$grey-2;
+
+            &:before{
+                background:$grey-2;
+            }
+        }
+    }
+
+    .col-pg-shift{
+        position:relative;
+        z-index:2;
+    }
+}
+.col-pg-content{
+    &.col-pg-left{
+        .col-pg-shift{
+            padding-left:rem(25);
+
+            @media (max-width:$container-max-widths-breakpoint) {
+                padding-left:0;
+                margin-left:0 !important;
+            }
+            // Calculate margin in pgGrid.js as width of scroll bar can be different
+            /*@media (min-width:1200px) {
+                margin-left:calc((#{$container-max-widths-xl} - (100vw - 15px)) / 2);
+            }*/
+        }
+    }
+    &.col-pg-right{
+        .col-pg-shift{
+            padding-right:rem(25);
+
+            @media (max-width:$container-max-widths-breakpoint) {
+                padding-right:0;
+                margin-right:0 !important;
+            }
+            // Calculate margin in pgGrid.js as width of scroll bar can be different
+            /*@media (min-width:1200px) {
+                margin-right:calc((#{$container-max-widths-xl} - (100vw - 15px)) / 2);
+            }*/
+        }
+    }
+}

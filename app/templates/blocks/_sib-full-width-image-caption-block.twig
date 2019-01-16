@@ -1,0 +1,33 @@
+{% if block.image.one %}
+    <section class="sib-full-width-image-caption-block">
+        <div class="container pg-offset-left-lg pg-no-gaps">
+            <div class="row">
+
+                {% set gridContent %}
+                    <div class="caption"></div>
+                {% endset %}
+
+                {% include 'partials/_sib-pg-grid-element' with {
+                    gridClasses: 'col-lg-9 offset-lg-3',
+                    gridStyle: 'background-image:url("'~block.image.one.generalImages.src(1250)~'")',
+                    gridSide: 'right',
+                    gridType: 'content',
+                    gridColor: '',
+                    gridContent: gridContent
+                } %}
+
+            </div>
+        </div>
+
+        {% set gridContent %}
+            {{ block.caption }}
+        {% endset %}
+
+        {% include 'partials/_sib-pg-fluid-grid-element' with {
+            gridClasses: 'col-lg-3 offset-lg-3',
+            gridColor: block.background.one.colorClass,
+            gridContent: gridContent
+        } %}
+
+    </section>
+{% endif %}

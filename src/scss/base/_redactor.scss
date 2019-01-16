@@ -1,0 +1,156 @@
+
+.sib-text-block {
+    p {
+        font-family: $font-primary-400;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        font-stretch: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+    }
+    b, strong {
+        font-family: $font-primary-700;
+    }
+
+    .heading1 {
+        margin-bottom: rem(50);
+        overflow: inherit;
+        color: $color-pg-1;
+        font-family: $font-secondary-300-italic;
+        font-size: rem(80);
+        font-style: italic;
+        font-stretch: normal;
+        line-height: 0.88;
+        letter-spacing: normal;
+
+    }
+
+    .heading2 {
+        margin-bottom: rem(50);
+        overflow: inherit;
+        color: $color-pg-1;
+        font-family: $font-secondary-300-italic;
+        font-size: rem(60);
+        font-style: italic;
+        font-stretch: normal;
+        line-height: 0.93;
+        letter-spacing: normal;
+    }
+
+    .heading3 {
+        margin-bottom: rem(50);
+        overflow: inherit;
+        color: $color-pg-1;
+        font-family: $font-secondary-300-italic;
+        font-size: rem(28);
+        font-style: italic;
+        font-stretch: normal;
+        line-height: 1.05;
+        letter-spacing: normal;
+
+    }
+
+    .heading4 {
+        margin-bottom: 20px;
+        overflow: inherit;
+        color: $color-pg-1;
+        font-family: $font-primary-700;
+        font-size: rem(18);
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.44;
+        letter-spacing: normal;
+
+    }
+
+    .blockquote {
+        position: relative;
+        margin-right: 0;
+        margin-bottom: rem(50);
+        margin-left: 0;
+        font-family: $font-primary-300;
+        font-size: rem(24);
+        font-weight: 300;
+        font-stretch: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+
+    }
+    img {
+        max-width: 100%
+    }
+    ol, ul {
+        padding-left: rem(30);
+    }
+    ul {
+        list-style-type: disc;
+    }
+    li {
+        font-size: rem(16);
+    }
+    figure {
+        margin-top: 60px;
+        margin-right: 0;
+        margin-bottom: 40px;
+        margin-left: 0;
+
+    }
+    figure.image-left {
+        float: left;
+    }
+    figure.image-right {
+        float: right;
+    }
+    figure.image-center {
+        text-align: center
+    }
+
+    table {
+        width: 100%;
+        margin-top: rem(30);
+        margin-bottom: rem(30);
+        border-spacing: 0;
+        thead {
+
+            padding: rem(24) rem(30) rem(24) rem(30);
+            font-family: $font-primary-700;
+            font-size: rem(16);
+            tr {
+                background-color: #EAEAEA;
+            }
+            th {
+                padding-top: rem(24);
+                padding-bottom: rem(24);
+                padding-left: rem(24);
+                text-align: left;
+                border: 0;
+            }
+        }
+        tbody {
+
+            tr:first-child {
+
+                td {
+                    padding-top: 30px;
+                }
+            }
+
+        }
+        tr {
+
+            @include media-breakpoint-up(md) {
+                margin: rem(5) rem(30) rem(5) rem(30);
+            }
+            td {
+                padding-left: rem(24);
+                line-height: rem(20px);
+                text-align: left;
+            }
+            font-size: rem(14);
+        }
+
+    }
+
+}
+

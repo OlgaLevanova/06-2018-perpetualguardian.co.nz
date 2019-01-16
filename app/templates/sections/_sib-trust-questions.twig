@@ -1,0 +1,23 @@
+<section class="sib-trust-questions">
+    <div class="sib-trust-questions__short-text">
+        {{ entry.shortText }}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="sib-trust-questions__question-number">
+                Question <span class="sib-trust-questions__counter">1</span> / 9
+            </div>
+            <form>
+                {% for question in entry.questions.all() %}
+                    <div class="sib-trust-questions__item">
+                        {{ question.question }}
+                    </div>
+                {% endfor %}
+                <input type="hidden" value="" name="">
+                <div class="sib-trust-questions__slider-container">
+                    <div class="sib-trust-questions__slider"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

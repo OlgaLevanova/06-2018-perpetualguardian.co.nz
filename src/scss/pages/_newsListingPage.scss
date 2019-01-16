@@ -1,0 +1,16 @@
+.page-cms-newslistingpage{
+    .sib-news-list{
+        padding-top:1px;
+
+        .container{
+            margin-top:0;
+            
+            @media all and (min-width:$md-breakpoint){
+                margin-top:rem(40);
+            }
+            @media all and (min-width:$lg-breakpoint){
+                margin-top:rem(-40);
+            }
+        }
+    }
+}

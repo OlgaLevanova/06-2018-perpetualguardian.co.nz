@@ -1,0 +1,64 @@
+<div class="sib-news__hero">
+    <div class="container-fluid">
+        <div class="row">
+
+            {% set gridContent %}
+                <a href="/news">Back to menu</a>
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-md-3 sib-news__back-button',
+                gridSide: 'left',
+                gridType: 'content',
+                gridColor: '',
+                gridContent: gridContent
+            } %}
+            <div
+                class="sib-news__image sib-news__social-wrapper--top"
+                style="background-image:url({{ entry.newsTopImage is not empty ? entry.newsTopImage[0].generalImages.src(2500): '/assets/m42.jpg' }})">
+                <div class="sib-news__social">
+                    <div class="sib-news__social--title">Share on</div>
+                    <div class="sib-news__social--icons">
+                        <!-- Go to www.addthis.com/dashboard to customize your tools --> <div class="addthis_inline_share_toolbox"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% if entry.blockloop is defined and entry.blockloop is not null %}
+    {% include 'sections/_sib-block-loop' with {
+        blocks: entry.blockloop.all()
+    } %}
+
+    <div class="container sib-news__social-wrapper--bottom">
+        <div class="row">
+            {% set gridContent %}
+                <div class="sib-news__social">
+                    <div class="sib-news__social--title">Share on</div>
+                    <div class="sib-news__social--icons">
+                        <!-- Go to www.addthis.com/dashboard to customize your tools --> <div class="addthis_inline_share_toolbox"></div>
+                    </div>
+                </div>
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-lg-3 offset-lg-3',
+                gridSide: 'right',
+                gridType: 'background',
+                gridColor: 'pg-color-grey',
+                gridContent: gridContent
+            } %}
+        </div>
+    </div>
+
+{% endif %}
+
+{% include 'sections/_sib-news-related' %}
+ {%  block  footerScript %}
+     <!-- Go to www.addthis.com/dashboard to customize your tools -->
+     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b904a900fc03ef9"></script>
+ {% endblock %}
+

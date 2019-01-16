@@ -1,0 +1,8 @@
+<div class="{{ gridClasses }} col-pg-{{ gridSide }} col-pg-{{ gridType }} col-{{ gridColor }}">
+    <div
+            class="col-pg-shift"
+            {% if gridStyle is defined %}style="{{ gridStyle }}"{% endif %}
+    >
+        {{ gridContent|raw }}
+    </div>
+</div>

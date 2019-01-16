@@ -1,0 +1,45 @@
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    overflow: hidden;
+    font-family: $heading-font-family;
+    font-weight: normal;
+    line-height: 1.33;
+}
+
+h1 {
+    font-size: rem(40);
+    line-height: 1.25;
+
+    @media all and (min-width: $md-breakpoint) {
+        font-size: rem(48);
+    }
+}
+
+h2 {
+    font-size: rem(60);
+    line-height: 1.1;
+
+    @media all and (min-width: $md-breakpoint) {
+        font-size: rem(50);
+    }
+}
+
+h3 {
+    font-size: rem(40);
+    line-height: 1.1;
+}
+
+h4 {
+    font-size: rem(24);
+    line-height: 1.15;
+}
+
+h5 {
+    font-size: rem(16);
+    line-height: 1.33;
+}
+
+h6 {
+    font-size: rem(10);
+    line-height: 1.15;
+}

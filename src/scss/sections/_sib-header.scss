@@ -1,0 +1,102 @@
+.sib-header{
+    position:relative;
+    z-index:4; // because side-bar has z-index:3
+    padding-top:rem($nav-bar-height);
+    
+    .page-cms-homepage &{
+        background:$color-pg-1;
+
+        .col{
+            height:rem(400);
+
+            @media (min-width:$lg-breakpoint){
+                height:rem(700);
+            }
+        }
+    }
+    .col{
+        height:rem(350);
+
+        @media (min-width:$lg-breakpoint){
+            height:rem(500);
+        }
+    }
+    .sib-header__content{
+        position:relative;
+        top:50%;
+        transform:translateY(-50%);
+    }
+    .sib-header__breadcrumbs{
+        padding-bottom:rem(35);
+        color:$grey;
+        font-size:rem(14);
+
+        @media (min-width:$lg-breakpoint){
+            padding-bottom:rem(10);
+        }
+
+        a{
+            color:$grey;
+        }
+        *{
+            padding:0 rem(7);
+
+            &:first-child{
+                padding-left:0;
+            }
+        }
+    }
+    .sib-header__text{
+        color:$color-pg-1;
+        font-family:$font-secondary-300-italic;
+        font-size: rem(24);
+        font-style:italic;
+        line-height: 1.33;
+
+        .page-cms-homepage &{
+            color:$white;
+        }
+
+        @include media-breakpoint-up(md) {
+            font-size: rem(48);
+            line-height: 1.25;
+        }
+
+        b,
+        strong{
+            font-family:$font-secondary-900-italic;
+            font-style:italic;
+        }
+        p{
+            margin:0;
+        }
+
+    }
+    &__blurb{
+        padding-top: rem(30);
+        padding-bottom: rem(29);
+        color: $white;
+        font-family: $font-secondary-900-italic;
+        font-size: 16px;
+        font-style: italic;
+        font-weight: 900;
+        font-stretch: normal;
+        line-height: 1.63;
+        letter-spacing: normal;
+        background-color: $color-pg-1;
+
+        &--container{
+            margin-top: rem(-40);
+            margin-bottom: rem(-40);
+
+            @media (min-width:$md-breakpoint){
+                margin-top: rem(0);
+                margin-bottom: rem(-80);
+            }
+            @media (min-width:$lg-breakpoint){
+                margin-top: rem(-80);
+                margin-bottom: rem(-80);
+            }
+        }
+    }
+}

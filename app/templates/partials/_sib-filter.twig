@@ -1,0 +1,46 @@
+<div class="container sib-filter">
+    <div class="row">
+
+        {% set gridContent %}
+            <div class="row sib-filter__list" data-filter="container">
+                {% for item in items %}
+                    <div
+                            class="sib-filter__item {{ buttonClasses }}"
+                            data-filter="open"
+                            {% if filterType == 'scroll' %}
+                                data-scroll-button="{{ loop.index0 }}"
+                            {% elseif filterType == 'news' %}
+                                data-news-button="{{ item.id }}"
+                            {% endif %}
+                    >
+                        {#<a
+                                {% if filterType == 'scroll' %}
+                                    href="#block{{ loop.index0 }}"
+                                    data-scroll-button="{{ loop.index0 }}"
+                                {% elseif filterType == 'news' %}
+                                    href="#category{{ loop.index0 }}"
+                                    data-news-button="{{ item.id }}"
+                                {% endif %}
+
+                        >
+                            {{ item.title }}
+                        </a>#}
+                        {{ item.title }}
+                    </div>
+                {% endfor %}
+                <div class="sib-filter__button" data-filter="trigger">
+                    <span class="open-submenu icon-arrow-down"></span>
+                </div>
+            </div>
+        {% endset %}
+
+        {% include 'partials/_sib-pg-grid-element' with {
+            gridClasses: gridClasses,
+            gridSide: 'left',
+            gridType: 'content',
+            gridColor: 'pg-color-1',
+            gridContent: gridContent
+        } %}
+
+    </div>
+</div>

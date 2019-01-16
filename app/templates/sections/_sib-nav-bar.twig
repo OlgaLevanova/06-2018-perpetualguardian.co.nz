@@ -1,0 +1,71 @@
+<div class="sib-nav-bar">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-7 col-lg-4">
+                <div class="sib-nav-bar__logo">
+                    {% if entry.section.handle == 'homePage' %}
+                        <span>
+                            <img src="/images/logo-line-white.png" alt="Perpetual Guardian" class="logo-line">
+                            <img src="/images/logo-block-white.png" alt="Perpetual Guardian" class="logo-block">
+                        </span>
+                    {% else %}
+                        <a href="{{ siteUrl }}">
+                            <img src="/images/logo-line-colored.png" alt="Perpetual Guardian" class="logo-line">
+                            <img src="/images/logo-block-colored.png" alt="Perpetual Guardian" class="logo-block">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-5 col-lg-8">
+                <nav>
+                    {# Search and side menu buttons #}
+                    <ul class="sib-nav-bar__buttons">
+                        <li>
+                            <button class="sib-nav-bar__search icon-search" title="Search">
+                            </button>
+                        </li>
+                        <li>
+                            <button class="sib-nav-bar__search side-menu-trigger" title="Menu">
+                                <svg viewBox="0 0 30 20" id="icon-menu">
+                                    <path id="icon-menu-top" d="m 0,2 c 0,0 17,0 19,0 16,0 8,25 -2,16 C 11,11 0,0 0,0"/>
+                                    <path id="icon-menu-middle" d="m 0,10 19,0"/>
+                                    <path id="icon-menu-bottom" d="m 0,18 c 0,0 17,0 19,0 16,0 8,-25 -2,-16 C 11,9 0,20 0,20"/>
+                                </svg>
+                            </button>
+                        </li>
+                    </ul>
+
+                    {# Top menu #}
+                    {% include 'partials/_sib-menu' with {
+                    menu1: topMenu.topMenu.all(),
+                    menu1Classes: 'sib-menu-top',
+                    language: false,
+                    portal: false
+                    } %}
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="sib-search__container">
+        <div class="container">
+            <div class="row">
+                <div class="offset-lg-2 col-lg-8 sib-search__cols">
+                    <form class="sib-search__border" action="/search" method="get">
+                        <input type="text" name="k" class="sib-search__input" placeholder="What are you looking for?"
+                               maxlength="50">
+                        <button class="sib-search__button" type="submit">
+                            <span>Press Enter to search</span>
+                            <div class="button__icons">
+                                <span class="icon-arrow-down"></span>
+                            </div>
+                        </button>
+                    </form>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

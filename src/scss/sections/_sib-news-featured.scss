@@ -1,0 +1,179 @@
+.sib-news-list-featured{
+    .sib-news-list__slider__image{
+        position:relative;
+        min-height:rem(320);
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:cover;
+
+        @media (min-width:$md-breakpoint){
+            min-height:rem(700);
+        }
+
+        .button-play{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+        }
+    }
+    .sib-news-list__slider__info{
+        padding:0;
+
+        @media (min-width:$md-breakpoint){
+            padding:rem(80) rem(15) rem(80) rem(5);
+        }
+        @media (min-width:$lg-breakpoint){
+            padding-left:rem(25);
+        }
+    }
+    .sib-news-list__slider__date{
+        padding:rem(62) 0 rem(12);
+        font-size:rem(14);
+
+        @media (min-width:$md-breakpoint){
+            padding:0 0 rem(22);
+        }
+    }
+    h2{
+        padding-bottom:rem(54);
+        color:$color-pg-1;
+        font-family:$font-secondary-900-italic;
+        font-size:rem(24);
+        font-style:italic;
+        line-height:1.33;
+
+        @media (min-width:$md-breakpoint){
+            padding-bottom:rem(32);
+            font-size:rem(32);
+            line-height:1.31;
+        }
+    }
+    .sib-news-list__slider__text{
+        display:none;
+        padding-bottom:rem(65);
+        line-height:1.75;
+
+        @media (min-width:$md-breakpoint){
+            display:block;
+        }
+    }
+    .sib-news-list__slider__read-more{
+        padding-bottom:rem(92);
+
+        @media (min-width:$md-breakpoint){
+            padding-bottom:0;
+        }
+
+        a{
+            display:inline-block;
+            color:$color-pg-1;
+            font-family:$font-secondary-900-italic;
+            font-style:italic;
+            transition:all 0.2s;
+
+            &:hover{
+                text-decoration:none;
+                transform:translateX(10px);
+            }
+        }
+    }
+
+    .slick-prev,
+    .slick-next{
+        top:0;
+        z-index:2;
+        width:rem(80);
+        height:rem(80);
+        color:$white;
+        background:$color-pg-1;
+
+        @include icomoon;
+
+        &:before{
+            position:relative;
+            display:inline-block;
+            font-size:rem(12);
+            opacity:1;
+            transition:all 0.2s;
+
+            @include icomoon;
+        }
+        &:not(.slick-disabled):hover{
+            &:before{
+                font-size:rem(14);
+                transform:translateY(5px);
+            }
+        }
+    }
+    .slick-disabled{
+        cursor:default;
+        opacity:0.2;
+    }
+    .slick-prev{
+        right:rem(80);
+        left:auto;
+        transform:rotate(90deg);
+
+        &:before{
+            content: "\e900";
+        }
+    }
+    .slick-next{
+        right:0;
+        transform:rotate(-90deg);
+
+        &:before{
+            content: "\e900";
+        }
+    }
+    .slick-dots{
+        top:0;
+        bottom:auto;
+        text-align:left;
+        opacity:0;
+        transition:all 0.2s;
+
+        &.slick-dots--moved{
+            opacity:1;
+        }
+
+        li{
+            margin:0 2px;
+
+            button{
+                position:relative;
+                padding:0;
+
+                &:before{
+                    position:absolute;
+                    top:50%;
+                    display:inline-block;
+                    width:20px;
+                    height:2px;
+                    background:$grey-4;
+                    content:'';
+                    opacity:1;
+                    transform:translateY(-50%);
+                    transition:all 0.07s;
+                }
+                &:hover{
+                    &:before{
+                        height:4px;
+                    }
+                }
+            }
+
+            &.slick-active{
+                button{
+                    &:before{
+                        background:$color-pg-1;
+                    }
+                }
+            }
+        }
+    }
+    .slick-dotted.slick-slider{
+        margin:0;
+    }
+}

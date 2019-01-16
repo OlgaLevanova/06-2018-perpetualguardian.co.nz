@@ -1,0 +1,29 @@
+.sib-overlay-block{
+    .row > [class^="col"]{
+        padding-left:0 !important;
+
+        @media (max-width:$lg-breakpoint) {
+            padding-left:0 !important;
+        }
+    }
+    .sib-overlay-block__text{
+        position:relative;
+        z-index:5;
+        padding:rem(42) rem(40) rem(43);
+        color:$white;
+        font-family:$font-secondary-900-italic;
+        font-size:rem(16);
+        font-style:italic;
+        line-height:1.63;
+
+        @media (min-width:$lg-breakpoint){
+            position:absolute;
+            right:0;
+            padding-top:rem(54);
+            padding-bottom:rem(56);
+        }
+        @media (min-width:$lg-breakpoint) {
+            width:calc(100% + 50px);
+        }
+    }
+}

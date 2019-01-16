@@ -1,0 +1,12 @@
+{% set testimonial = craft.entries.section('testimonials').orderBy('RAND()').one() %}
+<div class="sib-testimonial">
+    <div class="sib-testimonial__image" style="background-image: url({{ testimonial.testimonialImage[0].generalImages.src(600) }})"></div>
+    <div class="sib-testimonial__content">
+        <div class="sib-testimonial__quote">
+            {{ testimonial.shortText }}
+        </div>
+        <div class="sib-testimonial__name">
+            {{ testimonial.testimonialName }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+{% set teamAll = craft.entries.section('teamPage').one() %}
+{% set teamPositions = teamAll.children().level(2).all() %}
+
+{# Team filter #}
+{% include 'partials/_sib-filter' with {
+    items: teamPositions,
+    gridClasses: 'col-lg-6 col-xl-3',
+    buttonClasses: 'col-md-6',
+    filterType: 'scroll'
+} %}
+
+<div class="container">
+    <div class="row">
+
+        {# Random testimonial #}
+        {% set gridContent %}
+            {% include 'partials/_sib-testimonial' %}
+        {% endset %}
+
+        {% include 'partials/_sib-pg-grid-element' with {
+            gridClasses: 'col-lg-3',
+            gridSide: 'left',
+            gridType: 'background',
+            gridColor: '',
+            gridContent: gridContent
+        } %}
+
+        {# Team #}
+        {% set gridContent %}
+            {% include 'sections/_sib-team' %}
+        {% endset %}
+
+        {% include 'partials/_sib-pg-grid-element' with {
+            gridClasses: 'col-lg-9 sib-team__wrapper',
+            gridSide: 'right',
+            gridType: 'content',
+            gridColor: 'pg-color-grey',
+            gridContent: gridContent
+        } %}
+
+    </div>
+</div>

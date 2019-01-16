@@ -1,0 +1,28 @@
+<section class="sib-links-block">
+    <div class="container pg-offset-left-lg">
+        <div class="row">
+
+            {% set gridContent %}
+                <ul>
+                    {% for link in block.links.all() %}
+                        <li>
+                            <a href="{{ link.sibLink.url }}">
+                                {{ link.sibLink.text }}
+                                <span class="icon-arrow-down"></span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-lg-9 offset-lg-3',
+                gridSide: 'right',
+                gridType: 'background',
+                gridColor: block.linksBackground.one.colorClass,
+                gridContent: gridContent
+            } %}
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,60 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+    {% switch entry.type %}
+        {% case "faqListingPage" %}
+            {% include 'pages/_faqPage' %}
+
+        {% case "genericPage" %}
+            {% include 'pages/_genericPage' %}
+
+        {% case "genericListingPage" %}
+            {% include 'pages/_genericListingPage' %}
+
+        {% case "locationsPage" %}
+            {% include 'pages/_locationsPage' %}
+
+        {% case "newsListingPage" %}
+            {% include 'pages/_newsListingPage' %}
+
+        {% case "newsArticlePage" %}
+            {% include 'pages/_newsArticlePage' %}
+
+        {% case "partneringListingPage" %}
+            {% include 'pages/_genericListingPage' %}
+
+        {% case "partneringPage" %}
+            {% include 'pages/_genericPage' %}
+
+        {% case "servicesListingPage" %}
+            {% include 'pages/_genericListingPage' %}
+
+        {% case "servicePage" %}
+            {% include 'pages/_genericPage' %}
+
+        {% case "givingBackPage" %}
+            {% include 'pages/_genericPage' %}
+
+        {% case "givingBackListingPage" %}
+            {% include 'pages/_genericListingPage' %}
+
+        {% case "aboutUsPage" %}
+            {% include 'pages/_genericPage' %}
+
+        {% case "aboutUsSubPage" %}
+            {% include 'pages/_genericPage' %}
+
+        {% case "teamListingPage" %}
+            {% include 'pages/_teamListingPage' %}
+
+        {% case "caseStudyPage" %}
+            {% include 'pages/_caseStudyPage' %}
+
+        {% case "resourcesListingPage" %}
+            {% include 'pages/_resourcesListingPage' %}
+
+        {% case "trustGuardPage" %}
+            {% include 'pages/_trustGuard' %}
+    {% endswitch %}
+{% endblock %}

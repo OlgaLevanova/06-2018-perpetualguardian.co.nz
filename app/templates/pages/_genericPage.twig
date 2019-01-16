@@ -1,0 +1,15 @@
+{% block content %}
+
+{% if entry.heroImage is defined and entry.heroImage|length  %}
+    <div class="sib-generic-hero" style="background-image: url( '{{ entry.heroImage[0].generalImages.src(2500) }}' )"></div>
+{% endif %}
+
+{% if entry.blockloop is defined and entry.blockloop is not null %}
+    {% include 'sections/_sib-block-loop' with {
+        blocks: entry.blockloop.all()
+    } %}
+{% endif %}
+
+
+{% endblock %}
+

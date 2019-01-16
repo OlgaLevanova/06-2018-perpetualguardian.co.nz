@@ -1,0 +1,408 @@
+.sib-footer{
+    position:relative;
+    font-size:rem(14);
+
+    @media (min-width:$md-breakpoint){
+        background-color:$color-pg-1;
+        background-image: url('/images/footer-background.svg');
+        background-position: bottom right rem(20);
+        background-repeat: no-repeat;
+        background-size: 613px 684px;
+    }
+
+    @media (min-width: $lg-breakpoint) {
+        z-index: 3; // So sidebar seats behind the footer and not at the top
+    }
+
+    &.sib-footer--no-before{
+        &:before{
+            display:none;
+        }
+    }
+    .sib-footer__row2{
+        margin-top: rem(-1);
+        @media (max-width:$container-max-widths-xl){
+            overflow:hidden;
+        }
+    }
+    a {
+        &:hover{
+            text-decoration:none;
+        }
+    }
+    .sib-footer__menu-complex{
+        .col-pg-shift{
+            padding-right:rem(20) !important;
+
+            @media (min-width:$lg-breakpoint){
+                padding-right:0 !important;
+            }
+        }
+
+        &::before {
+            background-color: transparent;
+        }
+    }
+
+    .logo-line{
+        display:block;
+        width:rem(217);
+        max-width:100%;
+        margin:rem(38) 0 rem(76);
+    }
+    .sib-footer__about{
+        padding-bottom:rem(37);
+        line-height:1.71;
+    }
+    .sib-footer__logos{
+        img{
+            display:block;
+            margin:rem(58) 0 rem(70);
+        }
+        .sib-footer__logos__family{
+            height: 60px;
+            display: flex;
+            align-items: center;
+            img{
+                margin:0;
+            }
+        }
+    }
+    .sib-footer__bottom{
+        .col-pg-shift{
+            padding-right:rem(25);
+            padding-left:0;
+
+            @media (max-width:$lg-breakpoint){
+                padding-right:rem(5);
+            }
+            @media (max-width:$md-breakpoint){
+                padding-right:rem(5);
+                padding-left:rem(5);
+            }
+        }
+    }
+    .sib-footer__gap,
+    .sib-footer__menu-complex,
+    .sib-footer__bottom{
+        z-index:2;
+        color:$white;
+        font-family:$font-secondary-400;
+        @media (max-width:$md-breakpoint){
+            background:$color-pg-1;
+        }
+
+        a{
+            color:$white;
+        }
+    }
+    .sib-footer__menu-complex,
+    .menus-bottom__simple,
+    .sib-footer__gap{
+        display:none;
+
+        @media (min-width:$md-breakpoint){
+            display:block;
+        }
+    }
+    .sib-menu-footer-level-1{
+        position:relative;
+        z-index:1;
+        display:flex;
+        flex-direction:column;
+        padding:rem(110) 0 rem(50);
+        line-height:1.14;
+
+        @media (min-width:$footer-lg-breakpoint){
+            flex-direction:row;
+        }
+    }
+    .sib-menu-footer-level-1__li{
+        flex:0 0 100%;
+        border:solid rgba($white, 0.2);
+        border-width:1px 0 0;
+
+        &:last-child{
+            border-width:1px 0;
+        }
+
+        @media (min-width:$footer-lg-breakpoint){
+            flex:0 0 25%;
+            padding-right:$grid-gutter-width;
+            border:none;
+        }
+
+        &.opened,
+        &:hover{
+            >a{
+                .open-submenu{
+                    &:before {
+                        margin-top:-3px;
+                        transform:translate(-50%, 0) rotate(180deg);
+                    }
+                }
+            }
+        }
+
+        >a{
+            position:relative;
+            display:block;
+            padding:rem(34) 0 rem(25);
+            font-family:$font-secondary-900-italic;
+            font-size:rem(16);
+            font-style:italic;
+
+            @media (min-width:$footer-lg-breakpoint){
+                padding:rem(37) 0;
+            }
+
+            .open-submenu{
+                position:absolute;
+                top:0;
+                right:0;
+                bottom:0;
+                display:block;
+                width:rem(77);
+                font-size:rem(12);
+                cursor:pointer;
+
+                @media (min-width:$footer-lg-breakpoint){
+                    display:none;
+                }
+
+                &:before{
+                    position:absolute;
+                    top:rem(38);
+                    left:50%;
+                    margin-top:0;
+                    transform: translate(-50%, 0);
+                    transition:all 0.2s;
+                }
+            }
+        }
+    }
+    .sib-menu-footer-level-2{
+        height:0;
+        overflow:hidden;
+
+        @media (min-width:$lg-breakpoint){
+            height:auto !important;
+            overflow:visible !important;
+        }
+
+        li{
+            padding:rem(9) 0;
+
+            &:last-child{
+                padding-bottom:rem(29);
+            }
+
+            a{
+                display:inline-block;
+                transition:all 0.2s;
+
+                &:hover{
+                    transform:translateX(10px);
+                }
+            }
+        }
+        .icon-arrow-down{
+            display:none;
+        }
+    }
+    .sib-footer__copyright{
+        position:relative;
+        z-index:1;
+        align-self:flex-end;
+        padding-bottom:rem(34);
+        &:after{
+            position: absolute;
+            bottom: -10px;
+            height: 30px;
+            left: 0;
+            width:100%;
+            background-color: $white;
+            content: ''
+        }
+        @media (min-width:$md-breakpoint){
+            background-color: $white;
+        }
+        @media (min-width:$footer-xl-breakpoint){
+            align-self:flex-start;
+            padding-top:rem(38);
+            padding-bottom:0;
+        }
+
+        &:before {
+            @media (min-width:$md-breakpoint) and (max-width:$footer-xl-breakpoint){
+                position: absolute;
+                top: -300%;
+                left: 0;
+                display: block;
+                width: 100%;
+                background-color: $white;
+                content: '';
+            }
+        }
+
+        .col-pg-content.col-pg-left .col-pg-shift{
+            padding-left:5px;
+
+
+        }
+    }
+    .sib-footer__gap-white {
+        height: 40px;
+        margin-top: -40px;
+        background-color: $white;
+    }
+    .sib-footer__menus-bottom{
+        position:relative;
+        z-index:1;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding-top:rem(33);
+        padding-bottom:rem(33);
+        margin-right:rem(-23);
+        background-color:$color-pg-1;
+
+        @media (min-width:$md-breakpoint){
+            align-items:flex-end;
+            margin-right:rem(-21);
+            background: transparent;
+        }
+        @media (min-width:$footer-xl-breakpoint){
+            align-items:center;
+            justify-content:flex-end;
+        }
+    }
+    .menus-bottom__side-menu{
+        position:relative;
+        z-index:5;
+        display:flex;
+        font-size:rem(20);
+
+        @media (min-width:$md-breakpoint){
+            display:none;
+        }
+
+        button{
+            padding:0;
+            margin:0;
+            color:$white;
+            cursor:pointer;
+            background:none;
+            border:none;
+        }
+    }
+    .menus-bottom__simple{
+        position:relative;
+        z-index:5;
+        display:none;
+        align-items:flex-start;
+        flex-direction:column;
+        justify-content:flex-end;
+        padding-right:rem(26);
+
+        @media (min-width:$md-breakpoint){
+            display:flex;
+        }
+        @media (min-width:$footer-xl-breakpoint){
+            align-items:center;
+            flex-direction:row;
+        }
+
+        li{
+            padding:rem(10) 0 0;
+
+            @media (min-width:$footer-xl-breakpoint){
+                padding:0 rem(21);
+            }
+        }
+    }
+    .menus-bottom__social{
+        position:relative;
+        z-index:5;
+        display:flex;
+        align-items:center;
+        font-size:rem(20);
+
+        li{
+            padding:rem(2) rem(16) 0;
+        }
+        a{
+            position:relative;
+            bottom:0;
+            text-decoration:none;
+            transition: all 0.2s;
+
+            &:hover{
+                bottom:3px;
+            }
+        }
+    }
+
+    &__info {
+        @media (min-width:$md-breakpoint){
+            position: relative;
+            background-color: $white;
+        }
+    }
+
+    &__info, &__copyright, &__gap-white {
+        &::before {
+            @media (min-width:$footer-xl-breakpoint){
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: -1000%;
+                display: block;
+                width: 1000%;
+                background-color: $white;
+                content: '';
+            }
+        }
+    }
+
+    .row {
+        position: relative;
+    }
+
+    &.sidebar-active {
+        @media (min-width: $lg-breakpoint) {
+            position: relative;
+        }
+
+        &:before{
+            @media (min-width: $lg-breakpoint) {
+                position: absolute;
+                top: -200px;
+                z-index: -1;
+                width: calc(1470px * 0.25);
+                height: 200px;
+                margin-left: calc((100vw - 1470px) / 2);
+                content: "";
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100;Transparent+to+WHite */
+                /* stylelint-disable */
+                background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                /* stylelint-enable */
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0); /* IE6-9 */
+            }
+        }
+    }
+    .client-mobile{
+        display:block;
+        @media (min-width: $lg-breakpoint) {
+            display: none;
+        }
+    }
+    .client-desktop{
+        display: none;
+        @media (min-width: $lg-breakpoint) {
+            display: block;
+        }
+    }
+}

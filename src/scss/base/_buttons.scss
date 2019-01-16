@@ -1,0 +1,76 @@
+.button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: rem(50);
+    padding: 0 rem(40);
+    font-family: $font-primary-400;
+    font-size: rem(14);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s 0.05s;
+    @media all and (min-width: $md-breakpoint) {
+        display: inline-flex;
+        width: auto;
+    }
+
+    &-primary {
+        background: $black;
+        border: 2px solid $black;
+
+        &--invert {
+            color: $white;
+            background: transparent;
+            border-color: $white;
+
+            &:hover {
+                color: $black;
+                background: $white;
+            }
+        }
+    }
+}
+.button-play{
+    position:relative;
+    display:inline-block;
+    width:rem(40);
+    height:rem(40);
+    cursor:pointer;
+    background:$orangey-yellow;
+    border-radius:50%;
+    transition:all 0.2s;
+
+    @media (min-width: $lg-breakpoint){
+        width:rem(80);
+        height:rem(80);
+    }
+
+    &:hover{
+        transform:scale(1.1);
+    }
+
+    &:before{
+        position:absolute;
+        top:50%;
+        left:50%;
+        display:block;
+        border-color:transparent transparent transparent $white;
+        border-style:solid;
+        border-width:5px 10px;
+        content:'';
+        transform:translate(-25%, -50%);
+
+        @media (min-width: $lg-breakpoint){
+            border-width:8px 16px;
+        }
+    }
+
+}
+
+button{
+    &:focus{
+        outline:0 !important;
+    }
+}

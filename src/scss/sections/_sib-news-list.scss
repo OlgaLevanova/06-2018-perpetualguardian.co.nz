@@ -1,0 +1,19 @@
+.sib-news-list{
+    position:relative;
+    padding:0 rem(5);
+    background:$grey-2;
+
+    @media (min-width:$lg-breakpoint){
+        padding:0 rem(25);
+    }
+
+    .row{
+        &.sib-news-list__listing{
+            padding-bottom:rem(110);
+
+            @media (min-width:$md-breakpoint){
+                padding-bottom:rem(140);
+            }
+        }
+    }
+}

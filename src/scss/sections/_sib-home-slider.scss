@@ -1,0 +1,94 @@
+.sib-home-slider{
+    position:relative;
+    display:none;
+    height:rem(700);
+    overflow:hidden;
+
+    @media all and (min-width: $md-breakpoint){
+        display:block;
+    }
+
+    #sib-home-slider__loader{
+        position:absolute;
+        bottom:0;
+        left:0;
+        z-index:3;
+        height:2px;
+        background:$white;
+    }
+
+    .sib-home-slider__item{
+        position:relative;
+        display:block !important;
+        height:rem(700);
+        overflow:hidden;
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    .slick-slide{
+        .sib-links-blocks__text{
+            left:33.3333%;
+        }
+
+        &:first-child{
+            .sib-links-blocks__text{
+                left:0;
+            }
+        }
+    }
+    .sib-links-blocks__text{
+        position:absolute;
+        bottom:0;
+        width:66.6666%;
+        padding:rem(53) rem(40) rem(24);
+        color:$white;
+        font-family:$font-secondary-300-italic;
+        font-size:rem(32);
+        font-style:italic;
+        line-height:1.31;
+
+        &.background-pg-color-1{
+            background:rgba($color-pg-1, 0.8);
+        }
+        &.background-pg-color-2{
+            background:rgba($color-pg-2, 0.8);
+        }
+        &.background-pg-color-3{
+            background:rgba($color-pg-3, 0.8);
+        }
+
+        b,
+        strong{
+            font-family:$font-secondary-900-italic;
+            font-style:italic;
+        }
+
+        a{
+            display:block;
+            padding:rem(34) 0;
+            color:$white;
+            font-family:$font-secondary-900-italic;
+            font-size:rem(16);
+            font-style:italic;
+            transition:all 0.2s;
+
+            &:hover{
+                text-decoration:none;
+                transform:translateX(10px);
+
+                .icon-arrow-down{
+                    opacity:1;
+                }
+            }
+
+            .icon-arrow-down{
+                display:inline-block;
+                font-size:rem(12);
+                opacity:0;
+                transform:translateX(30px) rotate(-90deg);
+                transition:all 0.2s;
+            }
+        }
+    }
+}

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {# SEO Start #}
+    {%- if seo is not defined and entry is defined and entry["seo"] is defined %}
+        {% set seo = entry.seo %}
+    {% endif %}
+    {% if seo is not defined or seo is null or seo.title == "" %}
+        {# check if its 404 page #}
+        {% set pageTitle = siteName %}
+        {% if entry is not defined %}
+            {% set pageTitle = '404 - Page Not Found' %}
+        {% endif %}
+        {% set seo = craft.seo.custom(pageTitle, '', false) %}
+    {% endif -%}
+
+    {% set social = craft.seo.social(seo) %}
+    {% set locale = craft.app.locale %}
+    {% set locales = craft.app.i18n.siteLocaleIds|without(locale) %}
+    <title>{{ seo.title }} | Perpetual Guardian</title>
+    <meta name="description" content="{{ seo.description }}" />
+
+    {# There is nothing in documentation about pulling keywords from DB so do some work #}
+    {# If there is no keywords seo.keywords is '[]' #}
+    {# This can be done in php. Just get JSON from seo.keywords string and get all keywords by 'keyword' key #}
+    {% set keywordStr = '' %}
+    {% if seo.keywords is defined and seo.keywords != '[]' %}
+        {% set keywords = seo.keywords|replace({'\"': ''}) %}
+        {% set keywords = keywords|replace({
+            'rating':'',
+            'keyword':'',
+            '},':'?',
+            ':':'',
+            '}':'',
+            '{':'',
+            ']':'',
+            '[':''
+        }) %}
+        {% set keywordsArr = keywords|split('?') %}
+        {% for keyword in keywordsArr %}
+            {% set keywordArr2 = keyword|split(',') %}
+            {% set keywordStr = keywordStr~keywordArr2[0] %}
+            {% if not loop.last %}
+                {% set keywordStr = keywordStr~', ' %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <meta name="keywords" content="{{ keywordStr }}" />
+    {% set fb = social.facebook -%}
+    <meta property="fb:app_id" content="{# TODO: Facebook App ID #}">
+    <meta property="og:url" content="{{ craft.app.request.pathInfo }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ fb.title }}" />
+    <meta property="og:image" content="{{ craft.seo.facebookImage(fb.image) }}" />
+    <meta property="og:description" content="{{ fb.description }}" />
+    <meta property="og:site_name" content="{{ siteName }}" />
+    <meta property="og:locale" content="{{ locale }}" />
+    {% for locale in locales -%}
+        <meta property="og:locale:alternate" content="{{ locale }}" />
+    {% endfor %}
+
+    {% set tw = social.twitter -%}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="{# TODO: Twitter Handle  #}" />
+    <meta name="twitter:url" content="{{ craft.app.request.pathInfo }}" />
+    <meta name="twitter:title" content="{{ tw.title }}" />
+    <meta name="twitter:description" content="{{ tw.description }}" />
+    <meta name="twitter:image" content="{{ craft.seo.twitterImage(tw.image) }}" />
+
+    <link rel="home" href="{{ siteUrl }}" />
+    <link rel="canonical" href="{{ craft.app.request.pathInfo }}">
+    {# SEO End #}
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/web/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/web/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/web/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/web/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/web/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/web/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/web/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/web/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/web/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/web/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/web/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/web/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/web/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/web/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/web/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" type="text/css" href="/web/build/app.css" />
+</head>
+<body class="page-cms-{{ entry is defined ? entry.type|lower : '404' }}">
+{% spaceless %}
+
+    {% if entry.id != 3 %}
+        {% include 'sections/_sib-side-helper' %}
+    {% endif %}
+
+    <div id="main-wrapper">
+
+        <div id="content-wrapper">
+
+            {% include 'sections/_sib-nav-bar' %}
+
+            {% if entry.id != 3 %}
+                {% include 'sections/_sib-header' %}
+            {% endif %}
+
+            <main id="content" role="main">
+                {% block content %}
+                    <p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+                    <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+                {% endblock %}
+            </main>
+            {% include 'partials/_sib-search-page' %}
+
+            {# Find which block in blockloop is the last.
+            If it's full width block - hide :before element in footer #}
+            {% set fullWidthBlock = 0 %}
+            {% if entry.blockloop is defined and entry.blockloop is not null %}
+                {% set blocks = entry.blockloop.all() %}
+                {% for block in blocks %}
+                    {% switch block.type %}
+                        {% case "resources" %}
+                        {% set fullWidthBlock = 1 %}
+
+                        {% case "callUs" %}
+                        {% set fullWidthBlock = 1 %}
+
+                        {% case "cta" %}
+                        {% set fullWidthBlock = 1 %}
+
+                        {% case "caseStudy" %}
+                        {% set fullWidthBlock = 1 %}
+
+                        {% default %}
+                        {% set fullWidthBlock = 0 %}
+
+                    {% endswitch %}
+                {% endfor %}
+            {% else %}
+                {% set fullWidthBlock = 1 %}
+            {% endif %}
+
+            {% include 'sections/_sib-footer' %}
+
+        </div>
+
+        <div id="aside-nav-wrapper">
+            {% include 'sections/_sib-aside-nav' %}
+        </div>
+
+    </div>
+    {% block footerScript %}{% endblock %}
+{% endspaceless %}
+{% include 'partials/_sib-overlay-contact-team' %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWwJhOWSdpKY3lEpLs5AaeuO4WJ5EnNu0"></script>
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+
+<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
+<script type="text/javascript">
+    window.recaptchaWidgets = {
+        widgetContact: null,
+        widgetSales: null
+    };
+    var onloadCallback = function() {
+        if (document.getElementById('_recaptcha-contact')) {
+            window.recaptchaWidgets.widgetContact = grecaptcha.render('_recaptcha-contact', {
+                'sitekey': '6Lfv0YMUAAAAAI9vf16s_QmZURHLPAMWhWo59uHK'
+            });
+        }
+    }
+</script>
+<script type="text/javascript" src="/build/app.js"></script>
+</body>
+</html>

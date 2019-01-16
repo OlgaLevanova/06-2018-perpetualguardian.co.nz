@@ -1,0 +1,61 @@
+@font-face {
+    font-family: icomoon;
+    font-style: normal;
+    font-weight: normal;
+    src: url('/web/fonts/Icomoon/icomoon.eot?67b2sf');
+    src: url('/web/fonts/Icomoon/icomoon.eot?67b2sf#iefix') format('embedded-opentype'),
+        url('/web/fonts/Icomoon/icomoon.ttf?67b2sf') format('truetype'),
+        url('/web/fonts/Icomoon/icomoon.woff?67b2sf') format('woff'),
+        url('/web/fonts/Icomoon/icomoon.svg?67b2sf#icomoon') format('svg');
+}
+
+@mixin icomoon {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: icomoon !important;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-transform: none;
+    speak: none;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    @include icomoon;
+}
+
+.icon-arrow-down:before {
+    content: "\e900";
+}
+.icon-arrow-dropdown:before {
+    content: "\e901";
+}
+.icon-close:before {
+    content: "\e902";
+}
+.icon-download:before {
+    content: "\e903";
+}
+.icon-facebook:before {
+    content: "\e904";
+}
+.icon-instagram:before {
+    content: "\e905";
+}
+.icon-linkedin:before {
+    content: "\e906";
+}
+.icon-menu:before {
+    content: "\e907";
+}
+.icon-phone:before {
+    content: "\e908";
+}
+.icon-search:before {
+    content: "\e909";
+}

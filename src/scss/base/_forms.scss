@@ -1,0 +1,238 @@
+.sib-form {
+
+    /* stylelint-disable */
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &::-ms-expand {
+            display: none;
+        }
+    }
+
+    &__input-text,
+    &__textarea,
+    &__input-datepicker,
+    &__select{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: rem(50);
+        padding: rem(10) rem(0);
+        margin: 0 0 rem(27);
+        font-family: $font-secondary-400;
+        font-size: rem(14);
+        line-height: 1.14;
+        background: transparent;
+        border: 0;
+        border-bottom: rem(1) solid $warm-grey;
+        border-radius: 0 !important;
+        transition: all 0.4s;
+        resize: none;
+        -webkit-appearance: none;
+
+        &::placeholder {
+            color: #D2D2D2;
+        }
+
+        &:-ms-input-placeholder {
+            color: #D2D2D2 !important;
+        }
+
+        // Clear field for IE
+        &::-ms-clear {
+            display: none;
+        }
+
+        // disabled state
+        &[disabled] {
+            opacity: 0.25;
+        }
+
+        // Error state
+        .sib-form-error & {
+
+            background: transparent;
+            border-color: $red;
+
+            &::placeholder {
+                color: $red;
+            }
+
+            &:-ms-input-placeholder {
+                color: $red !important;
+            }
+        }
+    }
+
+    &__textarea {
+        min-height: rem(167);
+        padding: rem(16) rem(11);
+        border: rem(1) solid $warm-grey;
+
+    }
+    &__input-datepicker {
+
+        border: 1px solid $warm-grey;
+        padding-left: 12px;
+        background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: url('/images/icons/dropdown.svg') no-repeat right 15px center;
+        &:focus {
+        }
+    }
+
+
+    &.sib-form--no-border {
+        .sib-form__input-text {
+            padding: rem(10) 0 !important;
+            border: none;
+            border-bottom: rem(2) solid $black;
+        }
+
+        .sib-form-error {
+            .sib-form__input-text,
+            .sib-form__input-datepicker,
+            .sib-form__textarea {
+                color: $color-pg-3;
+                background: transparent;
+                border-color: $color-pg-3;
+
+                &::placeholder {
+                    color: $color-pg-3;
+                }
+
+                &:-ms-input-placeholder {
+                    color: $color-pg-3 !important;
+                }
+            }
+        }
+    }
+    &__select {
+
+        border: 1px solid $warm-grey;
+        padding-left: 12px;
+        background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: url('/images/icons/dropdown.svg') no-repeat right 15px center;
+
+        &::-ms-expand {
+            display: none;
+        }
+    }
+    &__button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: rem(80);
+        padding: 0 rem(30) 0 rem(30);
+        margin-top: rem(150);
+        color: white;
+        font-family: $font-secondary-900-italic;
+        font-style: italic;
+        line-height: 1.63;
+        background-color: $greeny-blue;
+        border:0;
+        cursor:pointer;
+        transition: all ease 0.2s;
+
+        @media (min-width: $md-breakpoint) {
+            margin-top: rem(175);
+        }
+
+        &:hover{
+            padding-left:rem(40);
+            text-decoration: none;
+
+            .icon-arrow-down{
+                transform:translateX(10px) rotate(270deg);
+            }
+        }
+        .icon-arrow-down{
+            font-size:rem(12);
+            transform: rotate(270deg);
+            transition: all ease 0.2s;
+        }
+    }
+}
+
+.form-group-interests, .form-group-comms{
+    margin: rem(10) 0 0;
+    display:flex;
+    flex-flow: column;
+    @media (min-width: $md-breakpoint) {
+        flex-flow: wrap;
+    }
+
+    .sib-form-group-interest, .form-group-comm{
+        margin-right: rem(40);
+    }
+}
+
+input[type='checkbox'] {
+    width: rem(30);
+    opacity: 0;
+
+    & + label.sib-checkbox {
+        position:relative;
+        font-family: $font-secondary-400;
+        line-height: 1.25;
+        height: rem(20);
+        font-size: rem(14);
+        color: $grey;
+
+        &:before,
+        &:after {
+            position: absolute;
+            left:0;
+            width: rem(20);
+            height: rem(20);
+            margin-top: rem(-3);
+            margin-left: rem(-30);
+            content: '';
+            background-repeat: no-repeat;
+            background-size: rem(12) rem(12);
+            background-position: center center;
+            border: 1px solid $warm-grey;
+            transition: all 0.4s;
+        }
+
+        &:after {
+            display:block;
+            margin-top: rem(-20);
+            margin-left: rem(-30);
+            border: none;
+            background-image:url('/images/icons/tick.svg');
+            opacity:0;
+        }
+    }
+
+    // Don't show tick on hover on mobile and tablets
+    // For iOS. Doesn't work on Android
+    @supports not (-webkit-overflow-scrolling: touch) {
+
+        // For mobile devices. Doesn't work on iOS
+        @media not all and (hover:none), not all and (hover:on-demand) {
+            &:hover{
+                & + label.sib-checkbox{
+                    &:after{
+                        opacity:0.3;
+                    }
+                }
+            }
+        }
+    }
+
+    &:checked {
+        & + label.sib-checkbox{
+            &:after{
+                opacity:1;
+            }
+        }
+    }
+
+
+}

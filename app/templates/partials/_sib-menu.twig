@@ -1,0 +1,93 @@
+{# First level menu #}
+<ul class="sib-menu {{ menu1Classes }} {{ menu1Classes }}-level-1">
+    {% for link1 in menu1 %}
+
+        <li class="{{ menu1Classes }}-level-1__li {{ link1.sibLink.text == 'Client Portal' ? 'client-mobile' : '' }}" data-accordion="container">
+
+            <a href="{{ link1.sibLink.url }}" {% if link1.sibLink.target %}target="_blank"{% endif %}>
+                {{ link1.sibLink.text }}
+
+                {% if link1.includeAllSubsections or link1.link2|length %}
+                    <span class="open-submenu icon-arrow-down" data-accordion="trigger"></span>
+                {% endif %}
+            </a>
+
+            {% if link1.includeAllSubsections or link1.link2|length %}
+
+                <ul class="{{ menu1Classes }}-level-2" data-accordion="open">
+
+                    {% if link1.includeAllSubsections %}
+                        {# Get all children entries #}
+                        {% set menuSecondLevel = link1.sibLink.getElement().children().level(2).all() %}
+                        {% if menuSecondLevel|length %}
+
+                            {# Second level menu with children entries #}
+                            {% for link2 in menuSecondLevel %}
+                                <li>
+                                    <a href="{{ link2.url }}">
+                                        {{ link2.title }}
+                                        <span class="icon-arrow-down"></span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+
+                        {% endif %}
+
+                    {% endif %}
+                    {% if link1.sibLink.text == 'About' %}
+                        <li class="sib-menu-footer-level-1__li client-desktop" data-accordion="container"><a href="https://my.perpetualguardian.co.nz/">
+                                Client Portal
+                            </a></li>
+                    {% endif %}
+                    {% if link1.link2|length %}
+
+                        {# Second level menu with list of entries #}
+                        {% for link2 in link1.link2.all() %}
+                            <li>
+                                <a href="{{ link2.sibLink.url }}">
+                                    {{ link2.sibLink.text }}
+                                    <span class="icon-arrow-down"></span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+
+    {# Language #}
+    {% if language %}
+        <li class="switch-locale {{ menu1Classes }}-level-1__li" data-accordion="container">
+            <span>
+                EN
+                <span class="icon-arrow-dropdown"></span>
+                <span class="open-submenu icon-arrow-down" data-accordion="trigger"></span>
+            </span>
+            <ul class="{{ menu1Classes }}-level-2" data-accordion="open">
+                <li>
+                    <a href="#">EN</a>
+                </li>
+                <li>
+                    <a href="#">中文</a>
+                </li>
+            </ul>
+        </li>
+    {% endif %}
+
+    {% if portal %}
+        {# This is only for side menu #}
+        <li class="my-portal {{ menu1Classes }}-level-1__li">
+            <a href="https://my.perpetualguardian.co.nz/">Log in to My Portal</a>
+        </li>
+
+        {# This is only for side menu on mobile #}
+        {% for link1 in footer.footerBottomMenu.all() %}
+            <li class="sib-aside-menu__footer-simple {{ menu1Classes }}-level-1__li">
+                <a href="{{ link1.link1.url }}" {% if link1.link1.target %}target="_blank"{% endif %}>
+                    {{ link1.link1.text }}
+                </a>
+            </li>
+        {% endfor %}
+    {% endif %}
+</ul>

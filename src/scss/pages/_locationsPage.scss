@@ -1,0 +1,124 @@
+.page-cms-locationspage{
+    .sib-overlay-block__text{
+        padding-top:rem(67);
+        padding-bottom:rem(67);
+    }
+}
+.sib-map-no-col{
+    padding-right: 0 !important;
+    padding-left:0 !important;
+}
+.sib-branch-accordian__wrapper{
+    /*width:calc(100% - 20px);
+    margin-left:rem(20);
+
+    @media (min-width:$lg-breakpoint){
+        width:100%;
+        margin-left:0;
+    }*/
+
+    @media (max-width:$lg-breakpoint){
+        width:calc(100% - 20px);
+        margin-left:rem(20);
+    }
+}
+.sib-branch-accordian{
+    margin-top: rem(60);
+    margin-bottom: rem(50);
+
+    @media (min-width:$lg-breakpoint){
+        padding-right: rem(20);
+        margin-top: rem(85);
+        margin-bottom: rem(62);
+    }
+
+    .sib-branch__list{
+        padding-bottom:rem(68);
+
+        @media (min-width:$lg-breakpoint){
+            padding-right:rem(25);
+        }
+
+        li{
+            border-bottom:2px solid $grey-3;
+
+            &.open-js,
+            &:hover{
+                .open-submenu{
+                    margin-top:-3px;
+                    transform:translateY(-50%) rotate(180deg);
+                }
+            }
+
+            .sib-branch__content{
+                display:flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height:0;
+                overflow:hidden;
+
+                @media (min-width:$md-breakpoint){
+                    flex-direction: row;
+                    width:calc(100% - 30px);
+                }
+                @media (min-width:1400px){
+                    width:75%;
+                }
+                div{
+                    padding-right:rem(15);
+                    margin-bottom: rem(37);
+                }
+                a{
+                    color: $color-pg-1;
+                    :hover{
+                        color: $color-pg-1;
+                        text-decoration:none;
+                    }
+
+                }
+
+                &.open-js{
+                    padding-bottom:rem(25);
+                }
+            }
+            img{
+                height:auto !important;
+                max-width:100% !important;
+            }
+        }
+        .sib-branch__list__single{
+            height:0;
+            transform:scale(0);
+            transition:all 0.4s;
+
+            &.sib-branch__list__single--visible{
+                height:auto;
+                transform:scale(1);
+                transition:all 0.4s;
+            }
+        }
+        h3{
+            position:relative;
+            padding:rem(50) rem(60) rem(48) 0;
+            color:$color-pg-1;
+            font-family:$font-secondary-900-italic;
+            font-size:rem(16);
+            font-style:italic;
+            line-height:1.38;
+            cursor:pointer;
+
+            @media (min-width:$md-breakpoint){
+                padding:rem(33) rem(60) rem(38) 0;
+            }
+
+            .open-submenu{
+                position:absolute;
+                top:50%;
+                right:rem(14);
+                font-size:rem(12);
+                transform:translateY(-50%);
+                transition:all 0.2s;
+            }
+        }
+    }
+}

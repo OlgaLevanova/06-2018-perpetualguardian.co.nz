@@ -1,0 +1,28 @@
+<section class="sib-video-block">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-1 col-lg-1 offset-lg-3 background-pg-color-grey"></div>
+
+            {% set gridContent %}
+                <h3>{{ block.sibTitle }}</h3>
+                <div class="sib-video-block__background" style="background-image:url('{{ block.image.one ? block.image.one.generalImages.src(2500) : "/images/m42.jpg" }}')">
+                    {% if block.videoId != '' %}
+                        {% include 'partials/_sib-open-video-button' with {
+                            videoTitle: block.videoTitle,
+                            video: block.videoId
+                        } %}
+                    {% endif %}
+                </div>
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: ' col-md-10 col-lg-7',
+                gridSide: 'right',
+                gridType: 'background',
+                gridColor: 'pg-color-grey',
+                gridContent: gridContent
+            } %}
+        </div>
+    </div>
+</section>

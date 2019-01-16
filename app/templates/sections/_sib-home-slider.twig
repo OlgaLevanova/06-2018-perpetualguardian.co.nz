@@ -1,0 +1,18 @@
+<section class="sib-home-slider">
+    <div class="sib-home-slider__slick">
+        {% for i in 0..(slides|length - 1) %}
+            <div class="sib-home-slider__item" style="background-image:url('{{ slides[i].image.one.generalImages.src(2500) }}')">
+                <div class="sib-links-blocks__text background-{{ entry.linksBlocks[i].colourOfTheBlock.one.colorClass }}">
+                    {{ slides[i].sibText }}
+
+                    <a href="{{ slides[i].sibLink.url }}">
+                        {{ slides[i].sibLink.text }}
+
+                        <span class="icon-arrow-down"></span>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div id="sib-home-slider__loader"></div>
+</section>

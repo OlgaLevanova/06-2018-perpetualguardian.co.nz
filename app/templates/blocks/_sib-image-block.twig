@@ -1,0 +1,24 @@
+{% if block.image.one %}
+    <section class="sib-image-block" data-anchor="{{ block.caption }}">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-1 col-lg-1 offset-lg-3 background-pg-color-grey"></div>
+
+                {% set gridContent %}
+                    <img src="{{ block.image.one.url }}" alt="{{ block.caption }}">
+                {% endset %}
+
+                {% include 'partials/_sib-pg-grid-element' with {
+                    gridClasses: ' col-md-10 col-lg-7',
+                    gridSide: 'right',
+                    gridType: 'background',
+                    gridColor: 'pg-color-grey',
+                    gridContent: gridContent
+                } %}
+            </div>
+        </div>
+
+    </section>
+{% endif %}

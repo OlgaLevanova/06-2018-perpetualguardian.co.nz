@@ -1,0 +1,178 @@
+.sib-generic-listing{
+    padding-bottom:rem(117);
+    background:$grey-2;
+
+    @media (min-width: $md-breakpoint){
+        padding-bottom:rem(167);
+    }
+
+    [class^="col-"], [class*=" col-"]{
+        display:flex;
+        padding:0 !important;
+
+        @media (min-width: $md-breakpoint){
+            display:block;
+        }
+    }
+
+    .sib-list-item{
+        &.show{
+            @media all and (max-width: $md-breakpoint){
+                flex:0 0 100%;
+                width:100%;
+            }
+        }
+    }
+    /*.sib-list-item{
+        display:none;
+        padding:0 !important;
+
+        &.hide{
+            display:none;
+        }
+        &.show{
+            display:flex;
+
+            @media (min-width: $md-breakpoint){
+                display:block;
+            }
+
+            &.hide{
+                display:none;
+            }
+        }
+    }*/
+    .generic-listing__image{
+        flex:0 0 100px;
+        height:auto;
+        background-position:center center;
+        background-repeat:no-repeat;
+        background-size:cover;
+
+        @media (min-width: $md-breakpoint){
+            height:calc(100vw / 2);
+        }
+        @media (min-width: $lg-breakpoint){
+            height:calc(100vw / 3);
+        }
+    }
+    .generic-listing__text{
+        position:relative;
+        display:block;
+        //flex:0 0 calc(100% - 100px);
+        flex-basis:calc(100% - 100px);
+        height:rem(100);
+        padding:0 rem(20);
+        color:$white;
+        font-family:$font-secondary-900-italic;
+        font-style:italic;
+
+        @media (min-width: $md-breakpoint){
+            position:absolute;
+            //bottom:rem(-40);
+            bottom:0;
+            left:0;
+            z-index:2;
+            width:rem(300);
+            height:rem(250);
+            padding:0 rem(30);
+        }
+
+        &:hover{
+            text-decoration:none;
+
+            .read-more{
+                @media (min-width: $md-breakpoint) {
+                    padding-left: rem(10);
+                }
+            }
+            h2{
+                @media (max-width: $md-breakpoint) {
+                    padding-left: rem(10);
+                }
+            }
+            .icon-arrow-down{
+                @media (max-width: $md-breakpoint) {
+                    right:rem(30);
+                    opacity:1;
+                }
+            }
+        }
+
+        >div{
+            position:relative;
+            top:50%;
+            transform:translateY(-50%);
+        }
+        .icon-arrow-down{
+            position:absolute;
+            top:50%;
+            right:rem(50);
+            font-size:rem(10);
+            opacity:0;
+            transform:translateY(-50%) rotate(-90deg);
+            transition:all 0.2s;
+        }
+    }
+    h2{
+        color:$white;
+        font-family:$font-secondary-900-italic;
+        font-size:rem(16);
+        font-style:italic;
+        line-height:1.25;
+        transition:all 0.2s;
+
+        @media (min-width: $md-breakpoint){
+            padding-bottom:rem(37);
+            font-size:rem(24);
+            line-height:1.33;
+        }
+    }
+    .read-more{
+        display:none;
+        color:$white;
+        font-size:rem(16);
+        font-style:italic;
+        line-height:1.63;
+        transition:all 0.2s;
+
+        @media (min-width: $md-breakpoint){
+            display:inline-block;
+        }
+    }
+    .open-video{
+        position:absolute;
+        top:50%;
+        left:rem(50);
+        z-index:5;
+        transform:translate(-50%, -50%);
+
+        @media (min-width: $md-breakpoint){
+            top:auto;
+            bottom:rem(250);
+            left:rem(22);
+            transform:translateY(-50%);
+        }
+        @media (min-width: $lg-breakpoint){
+            bottom:rem(215);
+        }
+        @media (min-width: $xl-breakpoint){
+            bottom:rem(250);
+        }
+
+        &:hover{
+            transform:translate(-50%, -50%) scale(1.1);
+
+            @media (min-width: $md-breakpoint) {
+                transform: translateY(-50%) scale(1.1);
+            }
+        }
+    }
+    .button-play{
+        @media (min-width:$lg-breakpoint) and (max-width:1060px){
+            bottom:rem(230);
+            width:rem(60);
+            height:rem(60);
+        }
+    }
+}

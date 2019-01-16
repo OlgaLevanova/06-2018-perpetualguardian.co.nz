@@ -1,0 +1,40 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+    {% set slides = entry.homeSlider.all() %}
+
+    {# Home slider #}
+    {% include 'sections/_sib-home-slider' with {
+        slides: slides
+    } %}
+
+    {# 3 coloured blocks with links, text, and buttons #}
+    {% include 'sections/_sib-links-blocks' with {
+        blocks: entry.linksBlocks.all(),
+        slides: slides
+    } %}
+
+    {% set newsAll = craft.entries.section('newsPage').one().children().level(2) %}
+
+    {# Slider of Featured News #}
+    {% include 'sections/_sib-news-list-featured' with {
+        items: newsAll
+    } %}
+
+
+    {# List of 3 last News #}
+    {% include 'sections/_sib-news-list' with {
+        showNews: 3,
+        items: newsAll,
+        homeBlock: true,
+        loadMore: false,
+        showItemsOnLoad: 2
+    } %}
+
+    {% if entry.blockloop is defined and entry.blockloop is not null %}
+        {% include 'sections/_sib-block-loop' with {
+            blocks: entry.blockloop.all()
+        } %}
+    {% endif %}
+{% endblock %}

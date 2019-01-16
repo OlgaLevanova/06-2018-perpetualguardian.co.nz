@@ -1,0 +1,203 @@
+<section class="sib-trust-questions-block" id="thanks">
+
+    {% set gridContent %}
+        {{ block.shortText }}
+    {% endset %}
+
+    {% include 'partials/_sib-pg-fluid-grid-element' with {
+        gridClasses: 'col-lg-3 offset-lg-3 sib-trust-questions-block__short-text',
+        gridColor: 'pg-color-1',
+        gridContent: gridContent
+    } %}
+
+    <div class="container" id="sib-trust-questions-block__form">
+        <form
+                class="sib-form sib-contact__form scroll-reveal"
+                method="post"
+                action=""
+                accept-charset="UTF-8"
+                novalidate
+                id="trust-guard-form"
+        >
+
+            {{ csrfInput() }}
+            <input type="hidden" name="action" value="guest-entries/save">
+            <input type="hidden" name="sectionId" value="27">
+            {{ redirectInput(entry.url~'#thanks') }}
+
+            <div class="row">
+
+                <div class="col-lg-1 offset-lg-3 background-pg-color-grey"></div>
+
+                {% set gridContent %}
+                    <div class="sib-trust-questions-block__question-number">
+                        <div class="sib-trust-questions-block__counter-title">
+                            Question <span class="sib-trust-questions-block__counter">1</span> / {{ block.questions|length + 3 }}
+                        </div>
+                        <div class="sib-trust-questions-block__info-title"></div>
+                    </div>
+
+                    {% for question in block.questions.all() %}
+                        <div class="sib-trust-questions-block__item">
+                            {{ question.question }}
+                            <input type="hidden" value="unsure" name="fields[formQuestion{{ loop.index }}]">
+                        </div>
+                    {% endfor %}
+                    <div class="sib-trust-questions-block__slider-container">
+                        <div class="sib-trust-questions-block__slider"></div>
+                    </div>
+                    <div class="sib-trust-questions-block__info sib-trust-questions-block__name">
+                        <div class="bad">
+                            <p>
+                                It looks like we might need to send you the results.
+                                Enter your details below and we'll email them to you on completion.
+                            </p>
+                        </div>
+                        <div class="good">
+                            You're managing your Trust well.
+                            <p>
+                                If in the future you have any questions or concerns about your Trust we’d love to help.
+                                Fill out your contact details for a no obligation discussion about TrustGuard.
+                            </p>
+                        </div>
+                        <div class="sib-form-group">
+                            <input
+                                    type="text"
+                                    name="fields[formFullName]"
+                                    placeholder="Full name"
+                                    class="sib-form__input-text required"
+                                    value=""
+                            >
+                        </div>
+                        <div class="sib-form-group">
+                            <input
+                                    type="email"
+                                    name="fields[formEmailTrustGuard]"
+                                    placeholder="Email"
+                                    class="sib-form__input-text required"
+                                    value=""
+                            >
+                        </div>
+                    </div>
+                    <div class="sib-trust-questions-block__info sib-trust-questions-block__location">
+                        <div>
+                            <p>
+                                Let us know your area and how you found out about us.
+                            </p>
+                        </div>
+                        <div class="sib-form-group">
+                            <input
+                                    type="text"
+                                    name="fields[formCity]"
+                                    placeholder="City"
+                                    class="sib-form__input-text required"
+                                    value=""
+                            >
+                        </div>
+                        <div class="sib-form-group">
+                            <select
+                                    name="fields[formHearAboutUs]"
+                                    class="sib-form__select required"
+                            >
+                                <option value="Google">Google</option>
+                                <option value="Adviser">Adviser</option>
+                                <option value="Email">Email</option>
+                                <option value="Perpetual Guardian Website">Perpetual Guardian Website</option>
+                                <<option value="Social Media">Social Media</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="sib-trust-questions-block__info sib-trust-questions-block__number">
+                        <div class="bad">
+                            <p>Your Trust could be invalid.</p>
+                            <p>
+                                Most importantly, you must fully understand your obligations under the Trust
+                                deed to ensure any actions you undertake don’t invalidate the Trust.
+                            </p>
+                            <p>
+                                Fill out your contact details for a no obligation discussion about TrustGuard,
+                                our service that fully reviews your Trust.
+                            </p>
+                        </div>
+                        <div class="good">
+                            You're managing your Trust well.
+                            <p>
+                                If in the future you have any questions or concerns about your Trust we’d love to help.
+                                Fill out your contact details for a no obligation discussion about TrustGuard.
+                            </p>
+                        </div>
+                        <div class="sib-form-group">
+                            <input
+                                    type="text"
+                                    name="fields[formContactNumber]"
+                                    placeholder="Contact number"
+                                    class="sib-form__input-text required"
+                                    value=""
+                            >
+                        </div>
+                        <div class="sib-form-group">
+                            <input
+                                    type="text"
+                                    name="fields[formBestTimeToContact]"
+                                    placeholder="What is the best time for us to contact you?"
+                                    class="sib-form__input-text required"
+                                    value=""
+                            >
+                        </div>
+                        <div class="sib-form-group">
+                            <div class="g-recaptcha required required-recaptcha" id="_recaptcha-contact"></div>
+                        </div>
+
+                    </div>
+
+                    <div id="sib-form-spinner">
+                        <div class="cssload-conveyor">
+                            <div>Sending...</div>
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                {% endset %}
+
+                {% include 'partials/_sib-pg-grid-element' with {
+                    gridClasses: 'col-lg-7 sib-trust-questions-block__form',
+                    gridSide: 'right',
+                    gridType: 'background',
+                    gridColor: 'pg-color-grey',
+                    gridContent: gridContent
+                } %}
+            </div>
+
+            {% include 'partials/_sib-faq-button' with {
+                openFaqPage: '0',
+                faqList: null,
+                dataFaq: '0'
+            } %}
+        </form>
+    </div>
+
+    <div class="container" id="sib-trust-questions-block__thanks">
+        <div class="row">
+            <div class="col-lg-1 offset-lg-3 background-pg-color-grey"></div>
+
+            {% set gridContent %}
+                <div class="sib-trust-questions-block__question-number">
+                    <div class="sib-trust-questions-block__counter-title">
+                        Thanks
+                    </div>
+                </div>
+                <div>
+                    We’ve received your submission and will be in touch.
+                </div>
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-lg-7',
+                gridSide: 'right',
+                gridType: 'background',
+                gridColor: 'pg-color-grey',
+                gridContent: gridContent
+            } %}
+        </div>
+    </div>
+</section>

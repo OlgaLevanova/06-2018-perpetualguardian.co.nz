@@ -1,0 +1,42 @@
+<section class="sib-text-block">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-1 col-lg-1 offset-lg-3 background-pg-color-grey"></div>
+
+            {% set gridContent %}
+                <div class="sib-text-block__inner{% if block.loadMoreButton %} hide-mobile{% endif %}">
+                    {% if block.sibTextTitle|length %}
+                        <h3 class="heading3" data-anchor="TextHeading">{{ block.sibTextTitle }}</h3>
+                    {% endif %}
+                    {{ block.sibText }}
+                </div>
+            {% endset %}
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: ' col-md-10 col-lg-7',
+                gridSide: 'right',
+                gridType: 'background',
+                gridColor: 'pg-color-grey',
+                gridContent: gridContent
+            } %}
+        </div>
+
+        {% if block.loadMoreButton %}
+            <div class="row sib-text-block__read-more">
+                {% set gridContent %}
+                    <div class="sib-text-block__read-more__button">
+                        <span class="sib-text-block__read-more__text">Read more</span>
+                        <span class="icon-arrow-down"></span>
+                    </div>
+                {% endset %}
+                {% include 'partials/_sib-pg-grid-element' with {
+                    gridClasses: ' col-lg-3 offset-lg-3',
+                    gridSide: 'right',
+                    gridType: 'background',
+                    gridColor: 'pg-color-grey',
+                    gridContent: gridContent
+                } %}
+            </div>
+        {% endif %}
+    </div>
+</section>

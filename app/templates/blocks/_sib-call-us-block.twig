@@ -1,0 +1,50 @@
+
+<section class="sib-call-us-block">
+    <div class="container pg-no-gaps">
+        <div class="row">
+
+            {% set image = '/images/m42.jpg' %}
+            {% if block.person.one.image.one %}
+                {% set image = block.person.one.image.one.generalImages.src(400) %}
+            {% endif %}
+
+            {% set gridContent %}
+                <img src="{{ image }}"/>
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-md-3 sib-call-us-block__image',
+                gridSide: 'left',
+                gridType: 'content',
+                gridColor: '',
+                gridStyle: "background-image:url('" ~ image ~"');",
+                gridContent: gridContent
+            } %}
+
+            {% set gridContent %}
+                <div class="sib-call-us-block__text">
+                    <div class="sib-call-us-block__borderline"></div>
+                    <h5>{{ block.person.one }}</h5>
+                    <p>{{ block.person.one.position }} - {{ block.person.one.location }}</p>
+                    <h3>
+                        Call us on
+                        <br class="display-mobile"/>
+                        {{ block.useGlobalCallUsBlock ? block.sibText : block.teamText }}
+                    </h3>
+                </div>
+                <a href="{{  block.url }}" class="sib-call-us-block__button">
+                    <span>Contact Us</span>
+                    <div class="icon-arrow-down"></div>
+                </a>
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-md-9 sib-call-us-block__content',
+                gridSide: 'right',
+                gridType: 'background',
+                gridColor: 'pg-color-3',
+                gridContent: gridContent
+            } %}
+        </div>
+    </div>
+</section>

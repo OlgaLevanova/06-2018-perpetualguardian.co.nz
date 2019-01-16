@@ -1,0 +1,56 @@
+{% set container = 'container-fluid' %}
+{% if entry.type == 'genericPage' or
+    entry.type == 'partneringPage' or
+    entry.type == 'servicePage' or
+    entry.type == 'givingBackListingPage' or
+    entry.type == 'aboutUsPage' or
+    entry.type == 'aboutUsSubPage'
+%}
+    {% set container = 'container' %}
+{% endif %}
+
+<header class="sib-header">
+    <div class="{{ container }}">
+        <div class="row">
+            <div class="col">
+                <div class="sib-header__content">
+                    {% if entry.section.handle != 'homePage' %}
+                        <div class="sib-header__breadcrumbs">
+                            <a href="/">Home</a> / <span>{{ entry.title }}</span>
+                        </div>
+                    {% endif %}
+                    <div class="sib-header__text">
+                        {% if entry.section.handle != 'homePage' %}
+                        <b>
+                            {% endif %}
+                            {% if entry.headerText != '' %}{{ entry.headerText }}{% else %}{{ entry.title }}{% endif %}
+                            {% if entry.section.handle != 'homePage' %}
+                        </b>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if(entry.headerBlurb is defined and entry.headerBlurb|length)  %}
+    <div class="container sib-header__blurb--container">
+        <div class="row">
+                {% set gridContent %}
+                    <div class="sib-header__blurb">
+                        {{ entry.headerBlurb }}
+                    </div>
+                {% endset %}
+
+                {% include 'partials/_sib-pg-grid-element' with {
+                    gridClasses: 'col-md-8 col-lg-3',
+                    gridSide: 'left',
+                    gridType: 'background',
+                    gridColor: 'pg-color-1',
+                    gridContent: gridContent
+                } %}
+        </div>
+    </div>
+    {% endif %}
+</header>

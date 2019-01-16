@@ -1,0 +1,34 @@
+{% set resourcesAll = craft.entries.section('resources').one().children().level(2) %}
+{% set resourcesCategories = craft.categories.group('resourcesCategories') %}
+{% set resourcesCategoriesActive = {} %}
+
+{# Show only those categories we use in resources #}
+{% for category in craft.categories.group('resourcesCategories').all() %}
+    {% if resourcesAll.relatedTo(category)|length %}
+        {% set resourcesCategoriesActive = resourcesCategoriesActive|merge([category]) %}
+    {% endif %}
+{% endfor %}
+
+{# News filter #}
+{% include 'partials/_sib-filter' with {
+    items: resourcesCategoriesActive,
+    gridClasses: 'col-md-6',
+    buttonClasses: 'col-md-6 col-lg-4 col-xl-3',
+    filterType: 'news'
+} %}
+
+{#
+Set this again, because after previous block resourcesAll become null.
+Tell me if you know why.
+ #}
+{% set resourcesAll = craft.entries.section('resources').one().children().level(2) %}
+
+{# List of all resources #}
+{% include 'sections/_sib-news-list' with {
+    items: resourcesAll,
+    loadMore: true,
+    showItemsOnLoad:8
+} %}
+
+{# Button load more #}
+{% include 'sections/_sib-load-more' %}

@@ -1,0 +1,300 @@
+.sib-team__wrapper{
+    padding-right:0 !important;
+    padding-bottom:rem(140);
+    padding-left:0 !important;
+
+    @media (min-width: $md-breakpoint){
+        padding-bottom:rem(170);
+    }
+}
+.sib-team {
+    &__details{
+        display:none;
+    }
+    &__title {
+        padding: rem(91) rem(12) rem(62);
+        color: $color-pg-1;
+        font-family: $font-secondary-300-italic;
+        font-size: rem(28);
+        font-style: italic;
+
+        @media (min-width: $md-breakpoint){
+            padding-left:rem(77);
+        }
+    }
+
+    ul.sib-team__people {
+        margin:0 0 rem(-7);
+
+        @media (min-width: $md-breakpoint){
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        li {
+            display:flex;
+            align-items:center;
+            flex-direction:row;
+            flex-wrap:wrap;
+            width:100%;
+            cursor:pointer;
+            transition:all 0.2s;
+
+            @media (min-width: $md-breakpoint){
+                display:block;
+                width: calc(100% / 3);
+            }
+
+            &:hover{
+                background:$white;
+                box-shadow:0 0 25px 0 rgba(0, 0, 0, 0.1);
+
+                .sib-team__person__button{
+                    padding-left:rem(10);
+                }
+            }
+
+            .sib-team__person {
+                &__img {
+                    flex-basis:100px;
+                    width:rem(100);
+                    height:rem(100);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+
+                    @media (min-width: $md-breakpoint){
+                        flex-basis:100%;
+                        width: 100%;
+                        height:auto;
+                    }
+
+                    &:after {
+                        display: block;
+                        padding-bottom: 100%;
+                        content: "";
+                    }
+                }
+                &__content {
+                    flex-basis:calc(100% - 100px);
+                    width:calc(100% - 100px);
+                    padding:0 rem(20);
+
+                    @media (min-width: $md-breakpoint){
+                        flex-basis:100%;
+                        width:100%;
+                        padding: rem(51) rem(54) rem(25) rem(34);
+                    }
+                }
+                &__subtitle {
+                    font-family: $font-primary-700;
+                    font-size: rem(12);
+                }
+                &__description {
+                    display:none;
+                    padding-top: rem(43);
+                    padding-bottom: rem(40);
+                    font-family: $font-primary-300;
+                    line-height: 1.75;
+
+                    @media (min-width: $md-breakpoint){
+                        display:block;
+                    }
+                }
+                &__button {
+                    display:none;
+                    padding-bottom:13px;
+                    padding-left:0;
+                    color: $color-pg-1;
+                    font-family: $font-secondary-900-italic;
+                    font-size: rem(16);
+                    font-style:italic;
+                    cursor: pointer;
+                    background: transparent;
+                    border:rem(0);
+                    transition:all 0.2s;
+
+                    @media (min-width: $md-breakpoint){
+                        display:block;
+                    }
+                }
+            }
+            h2 {
+                padding-bottom: 13px;
+                color: $color-pg-1;
+                font-family: $font-secondary-900-italic;
+                font-size: rem(16);
+                font-style:italic;
+            }
+        }
+    }
+}
+
+.sib-modal {
+    &__close{
+        position: absolute;
+        top:20px;
+        right:0;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 80px;
+        color: $white;
+        font-size: rem(24);
+        cursor:pointer;
+        background-color: $color-pg-3;
+
+        @media (min-width: $lg-breakpoint){
+            top:107px;
+        }
+
+        &:hover{
+            background-color: darken($color-pg-3, 10%)
+        }
+    }
+    &__col{
+        position:relative;
+        display:flex;
+        align-items: start;
+        flex-direction: column;
+        max-width:calc(100% - 20px);
+        margin-right: auto;
+        margin-left: auto;
+
+        @media (min-width: $sm-breakpoint){
+            max-width:calc(100% - 40px);
+        }
+        @media (min-width: $lg-breakpoint){
+            flex-direction: row;
+            max-width: rem(950);
+        }
+        @media (min-width: $xl-breakpoint){
+            max-width: rem(1100);
+        }
+    }
+    &--overlay{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1000000;
+        display: flex;
+        background-color: rgba(0, 0, 0, 0.7);
+        transition: opacity ease 1s;
+
+
+    }
+    &__person {
+        /*display:flex;
+        align-items: flex-start;
+        flex-direction:row;*/
+        width:100%;
+        margin-top:rem(100);
+
+        @media (min-width: $lg-breakpoint){
+            align-items: center;
+            margin-top:0;
+        }
+        a{
+            text-decoration: none;
+        }
+        .sib-overlay-team--hide{
+            display:none !important;
+        }
+        .icon-linkedin, .icon-phone{
+            color: $color-pg-1;
+        }
+
+        .icon-phone{
+            margin-right: rem(20);
+        }
+        .sib-overlay-team__vcard{
+            display:inline;
+            img{
+                display:inline;
+            }
+        }
+        &__wrapper {
+            flex:1 auto auto;
+            width:100%;
+            padding: rem(48);
+            padding-right: rem(15);
+            padding-left: rem(15);
+            margin:0 0 rem(156);
+            line-height: 1.75;
+            background-color: $white;
+
+            @media (min-width: $md-breakpoint){
+                padding:rem(68) rem(48);
+            }
+            @media (min-width: $lg-breakpoint){
+                width:calc(100% - 373px);
+                min-height:rem(373);
+                margin:rem(187) 0 rem(156);
+            }
+        }
+        &__img {
+            width: 100%;
+            margin-top:rem(100);
+            background-position:center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            @media (min-width: $lg-breakpoint){
+                width:rem(373);
+                height:rem(373);
+                margin-top:rem(187);
+            }
+            &:after {
+                display: block;
+                content: "";
+
+                @media (max-width: $lg-breakpoint){
+                    padding-bottom: 100%;
+                }
+            }
+        }
+        &__title {
+            padding-bottom: rem(28);
+            color: $color-pg-1;
+            font-family: $font-secondary-900-italic;
+            font-size: rem(32);
+            font-style:italic;
+
+            span {
+                display:block;
+                font-size:rem(16);
+
+                @media (min-width: $sm-breakpoint){
+                    display:inline-block;
+                    padding-left:rem(10);
+                }
+            }
+        }
+        &__details {
+            margin-bottom: rem(42);
+            color: $color-pg-1;
+            font-family: $font-secondary-900-italic;
+            font-size: rem(16);
+            font-style:italic;
+
+            span{
+                margin-right: rem(27);
+
+                &.sib-overlay-team__location{
+                    @media (max-width: $sm-breakpoint){
+                        display:block;
+                        margin:rem(17) 0 0;
+                    }
+                }
+            }
+        }
+    }
+
+}
+.sib-overlay-team__number--text{
+    color: $color-pg-1;
+    font-size: rem(16);
+}

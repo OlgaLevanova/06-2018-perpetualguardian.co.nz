@@ -1,0 +1,18 @@
+<section class="sib-back-home">
+    <div class="container">
+        <div class="row">
+
+            {% set gridContent %}
+                <a href="/">{{ linkText }}</a>
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-md-3 sib-back-home__link',
+                gridSide: 'left',
+                gridType: 'content',
+                gridColor: 'pg-color-2',
+                gridContent: gridContent
+            } %}
+        </div>
+    </div>
+</section>

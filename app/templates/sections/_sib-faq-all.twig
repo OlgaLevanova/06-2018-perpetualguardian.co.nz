@@ -1,0 +1,48 @@
+<div class="container sib-faq-all">
+    {% for faqCategory in faqCategories %}
+
+        <div class="row">
+            <div class="offset-lg-3 col-lg-1 background-pg-color-grey"></div>
+
+            {% set gridContent %}
+                {% set faqList = faqCategory.children().level(3).all() %}
+
+                {% set allFAQ = false %}
+                {% set showButton = false %}
+                {% if faqList|length > 5 %}
+                    {% set showButton = true %}
+                {% endif %}
+
+                <div
+                        class="sib-faq-all__title"
+                        id="block{{ loop.index0 }}"
+                        data-scroll-block="{{ loop.index0 }}">
+                    {{ faqCategory.title }}
+                </div>
+
+                {% include 'partials/_sib-faq' with {
+                    faqList: faqList,
+                    allFAQ: allFAQ,
+                    showButton: showButton,
+                    dataFaq: loop.index0
+                } %}
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-lg-8',
+                gridSide: 'right',
+                gridType: 'background',
+                gridColor: 'pg-color-grey',
+                gridContent: gridContent
+            } %}
+        </div>
+
+        {% if showButton %}
+            {% include 'partials/_sib-faq-button' with {
+                openFaqPage: false,
+                faqList: faqList,
+                dataFaq: loop.index0
+            } %}
+        {% endif %}
+    {% endfor %}
+</div>

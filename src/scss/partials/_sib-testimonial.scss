@@ -1,0 +1,45 @@
+.sib-testimonial {
+    display:none;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: rem(128);
+    opacity: 1;
+    transition: opacity 0.2s;
+
+    @media (min-width: $lg-breakpoint) {
+        display: flex;
+    }
+    &__image {
+        flex: 1;
+        width: 33%;
+        margin-bottom: 20px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+
+        &:after {
+            display: block;
+            padding-bottom: 100%;
+            content: "";
+        }
+    }
+    &__content {
+        width: calc(((100% / 3) * 2) - 22px);
+
+    }
+    &__quote {
+        margin-bottom: rem(12);
+
+        font-family: $font-secondary-300-italic;
+        font-size: rem(16);
+
+    }
+    &__name {
+        font-family: $font-primary-700;
+        font-size: rem(12);
+    }
+
+    &.hide {
+        opacity: 0;
+    }
+}

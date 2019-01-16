@@ -1,0 +1,8 @@
+{% block content %}
+    {% if(entry.heroImage is defined and entry.heroImage|length)  %}
+        <div class="sib-generic-hero" style="background-image: url( {{ entry.heroImage[0].generalImages.src(2500) }} )"></div>
+    {% endif %}
+
+    {% include 'sections/_sib-trust-questions' %}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+<section class="sib-locations">
+    {% for region in regions %}
+        {# Map #}
+        <div data-scroll-block="{{ loop.index0 }}">
+        {% include 'partials/_sib-branch-map' with
+        {
+            'regionTitle' : region.title,
+            'cities' :  region.mapMultiple
+        }%}
+
+        {% set cities = region.children().level(3).all() %}
+        {# List of cities #}
+        {% include 'partials/_sib-branch-accordian' with
+        {
+            'cities' :  cities
+        }%}
+        </div>
+    {% endfor %}
+</section>

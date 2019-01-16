@@ -1,0 +1,40 @@
+<section class="sib-map-block">
+
+    {% set gridContent %}
+        {{ regionTitle }}
+    {% endset %}
+
+    {% include 'partials/_sib-pg-fluid-grid-element' with {
+        gridClasses: 'col-lg-3 offset-lg-3',
+        gridColor: 'pg-color-3',
+        gridContent: gridContent
+    } %}
+
+    {% set gridContent %}
+        <div class="map-wrapper">
+            <div class="map-container"></div>
+
+            {% for address in cities.all() %}
+                <div class="map-data"
+                     data-lat="{{ address.address.lat }}"
+                     data-lng="{{ address.address.lng }}"
+                     data-address="{{ address.address }}"
+                >
+                </div>
+            {% endfor %}
+        </div>
+    {% endset %}
+
+    <div class="container pg-offset-left-lg pg-no-gaps">
+        <div class="row">
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-lg-9 offset-lg-3',
+                gridSide: 'right',
+                gridType: 'content',
+                gridColor: '',
+                gridContent: gridContent
+            } %}
+        </div>
+    </div>
+
+</section>

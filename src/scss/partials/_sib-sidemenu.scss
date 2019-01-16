@@ -1,0 +1,32 @@
+.sib-sidemenu{
+    display: none;
+    padding: rem(20) rem(30);
+    border-left: 2px solid $color-pg-1;
+
+    @media (min-width: $lg-breakpoint) {
+        display: block;
+    }
+    ul{
+        li{
+            padding-bottom: rem(16);
+            font-family: $font-secondary-300-italic;
+            font-size: rem(14);
+            font-style: italic;
+            font-weight: normal;
+            font-stretch: normal;
+            line-height: 1.43;
+            letter-spacing: normal;
+            cursor:pointer;
+            transition: ease all 0.3s;
+
+            &.active{
+                color: $color-pg-1;
+            }
+
+            &:hover {
+                transform:translateX(10px);
+            }
+
+        }
+    }
+}

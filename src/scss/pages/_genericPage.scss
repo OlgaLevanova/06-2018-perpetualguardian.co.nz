@@ -1,0 +1,23 @@
+.sib-generic-hero{
+    width: 100%;
+    height: rem(400);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media (min-width:$md-breakpoint){
+        height:rem(500);
+    }
+    @media (min-width:$xl-breakpoint){
+        height:rem(700);
+    }
+    @media (min-width:$xxl-breakpoint){
+        height:rem(750);
+    }
+    /*+ .sib-block-loop{
+        margin-top: rem(-40);
+        @media (min-width:$md-breakpoint){
+            margin-top: rem(-77);
+        }
+    }*/
+}
+

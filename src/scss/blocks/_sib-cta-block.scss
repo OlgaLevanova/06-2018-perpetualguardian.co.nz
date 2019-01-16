@@ -1,0 +1,60 @@
+.sib-cta-block{
+    color:$white;
+    font-family:$font-secondary-900-italic;
+    font-size:rem(16);
+    font-style:italic;
+    line-height:1.63;
+
+    @media (min-width:$lg-breakpoint){
+        position: relative;
+        z-index: 4;
+        font-size:rem(32);
+        line-height:1.31;
+    }
+
+    a{
+        position:relative;
+        display:block;
+        padding:rem(47) rem(5);
+        color:$white;
+        transition:0.2s;
+
+        @media (min-width:$lg-breakpoint){
+            padding:rem(82) 0 rem(81) rem(25);
+        }
+        @media (max-width:$container-max-widths-breakpoint){
+            padding-left:0;
+        }
+
+        &:hover{
+            padding-left:rem(35);
+            text-decoration:none;
+
+            @media (max-width:$container-max-widths-breakpoint){
+                padding-left:rem(10);
+            }
+
+            &:before{
+                margin-right:-10px;
+            }
+        }
+        &:before{
+            @include icomoon;
+
+            position:absolute;
+            top:50%;
+            right:0;
+            font-size:rem(12);
+            content: "\e900";
+            transform:translateY(-50%) rotate(-90deg);
+            transition:0.2s;
+
+            @media (min-width:$lg-breakpoint){
+                right:rem(20);
+            }
+            @media (max-width:$container-max-widths-breakpoint){
+                right:0;
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+.sib-map-block{
+    .map-container{
+        width:100%;
+        height:rem(400);
+
+        @media (min-width:$md-breakpoint) {
+            height:rem(700);
+        }
+    }
+    .col-pg-shift{
+        padding:0 0 0 $grid-container-gutter-width-sm !important;
+
+        @media (min-width:$md-breakpoint) {
+            padding:0 !important;
+        }
+    }
+    .sib-overlay-block{
+        .sib-overlay-block__text{
+            top:0;
+            margin-bottom:rem(-40);
+
+            @media (min-width:$lg-breakpoint){
+                margin-bottom:0;
+            }
+        }
+    }
+
+    .gm-style{
+        >.gmnoprint,
+        >.gm-style-cc,
+        >button{
+            display:none;
+        }
+    }
+}
+
+.map-bubble-address{
+    color: $white;
+    font-family: $font-primary-700;
+    font-size: rem(12);
+    line-height: 1.5em;
+}

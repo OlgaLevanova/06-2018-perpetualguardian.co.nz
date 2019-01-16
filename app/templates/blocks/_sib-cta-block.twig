@@ -1,0 +1,13 @@
+<section class="sib-cta-block background-{{ block.ctaBackground.one.colorClass }}">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <a
+                        href="{{ block.cta.url }}" {% if block.cta.target %}
+                target="{{ block.cta.target }}"{% endif %}>
+                    {{ block.cta.text }}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

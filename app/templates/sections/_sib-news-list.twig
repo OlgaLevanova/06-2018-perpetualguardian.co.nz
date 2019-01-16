@@ -1,0 +1,146 @@
+<section class="sib-news-list">
+    {# If showNews wasn't specified - show all news #}
+    {% if showNews is not defined %}
+        {% set showNews = items|length - 1 %}
+    {% endif %}
+
+    <div class="container">
+        <div class="row sib-news-list__listing"  data-list-items-container="{{ showItemsOnLoad }}">
+
+            {% for i in 0..showNews %}
+
+                {% if not items[i].newsFeatured %}
+
+                    {#Title#}
+                    {% set title = items[i].title %}
+
+                    {# If entryExerpt exist - it's News, otherwise it's resources #}
+                    {% if items[i].entryExerpt %}
+                        {# Get News data #}
+
+                        {% if items[i].entryExerpt.one.caption != '' %}
+                            {% set title = items[i].entryExerpt.one.caption %}
+                        {% endif %}
+
+                        {# News text #}
+                        {% set text = items[i].entryExerpt.one.sibText|slice(0, 55)|trim %}
+                        {% if items[i].entryExerpt.one.sibText|length > 55 %}
+                            {% set text = text~'...'%}
+                        {% endif %}
+
+                        {# News categories #}
+                        {% set categories = '_' %}
+                        {% for category in items[i].newsCategory.all() %}
+                            {% set categories = categories~category.id~'_' %}
+                        {% endfor %}
+
+                        {% set prop = {
+                            image: items[i].entryExerpt.one.image.one,
+                            url: items[i].url,
+                            video: items[i].entryExerpt.one.video,
+                            videoTitle: items[i].entryExerpt.one.videoTitle,
+                            title: title,
+                            text: text,
+                            date: items[i].postDate|date("d F Y"),
+                            assetSize: '',
+                            assetExt: '',
+                            filterType: 'news',
+                            categories: categories
+                        } %}
+
+                    {% else %}
+                        {# Get Resources data #}
+
+                        {# Categories #}
+                        {% set categories = '_' %}
+                        {% for category in items[i].resourceCategories.all() %}
+                            {% set categories = categories~category.id~'_' %}
+                        {% endfor %}
+
+                        {# Image #}
+                        {% set image = '' %}
+                        {% if items[i].image %}
+                            {% set image = items[i].image.one %}
+                        {% endif %}
+
+                        {% set assetExt = items[i].resourceFile.one.extension %}
+                        {% set videoExtArr = ['mp4', 'm4a', 'm4v', 'f4v', 'f4a', 'm4b', 'm4r', 'f4b', 'mov', 'wmv', 'wma', 'webm', 'avi', 'mpeg'] %}
+                        {% if assetExt != 'pdf' %}
+
+                            {% if assetExt in videoExtArr|values %}
+                                {% set assetExt = 'video' %}
+                            {% else %}
+                                {% set assetExt = 'doc' %}
+                            {% endif %}
+
+                        {% endif %}
+
+                        {% set image = items[i].resourceFile.one %}
+                        {% if assetExt != 'jpg' and assetExt != 'jpeg' and assetExt != 'png' and assetExt != 'gif' %}
+                            {% set image = items[i].excerptImage.one %}
+                        {% endif %}
+
+                        {# Asset's size #}
+                        {% set assetSize = '' %}
+                        {% set bytes = items[i].resourceFile.one.size %}
+                        {% set kiloBytes = (bytes / 1024)|round(2) %}
+                        {% set megaBytes = (kiloBytes / 1024)|round(2) %}
+                        {% if megaBytes > 1 %}
+                            {% set assetSize = megaBytes~'Mb' %}
+                        {% elseif kiloBytes > 1 %}
+                            {% set assetSize = kiloBytes~'Kb' %}
+                        {% else %}
+                            {% set assetSize = bytes~'b' %}
+                        {% endif %}
+
+                        {% set prop = {
+                            image: image,
+                            url: items[i].resourceFile.one.url,
+                            video: items[i].video,
+                            videoTitle: items[i].videoTitle,
+                            title: title,
+                            text: items[i].sibText,
+                            date: '',
+                            assetSize: assetSize,
+                            assetExt: assetExt,
+                            filterType: 'news',
+                            categories: categories
+                        } %}
+
+                    {% endif %}
+
+                    {# If there should be Load more button don't show _sib-news-item items on load #}
+                    {# Show them all (adding class show) if there is not Load more button #}
+                    {% set show = '' %}
+                    {% if loadMore is not defined or loadMore == false %}
+                        {% set show = ' show' %}
+                    {% endif %}
+
+                    {% include 'partials/_sib-news-item' with {
+                        classes: 'col-12 col-md-6 col-lg-4 col-xl-3'~show,
+                        image: prop.image,
+                        url: prop.url,
+                        video: prop.video,
+                        videoTitle: prop.videoTitle,
+                        title: prop.title,
+                        text: prop.text,
+                        date: prop.date,
+                        categories: prop.categories,
+                        assetSize: prop.assetSize,
+                        assetExt: prop.assetExt,
+                        filterType: prop.filterType
+                    } %}
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+    {% if homeBlock is defined %}
+        <a href="/" class="sib-news-list__home-more">
+            More news
+            <span class="icon-arrow-down"></span>
+        </a>
+    {% endif %}
+
+</section>

@@ -1,0 +1,34 @@
+<section
+        class="sib-case-study-block"
+        {% if block.caseStudy.one.caseStudyImage.one %}
+            style="background-image:url('{{ block.caseStudy.one.caseStudyImage.one.generalImages.src(1250) }}');"
+        {% endif %}>
+    <div class="container pg-offset-right-md">
+        <div class="row">
+
+            {% set gridContent %}
+                <div class="case-study__content">
+                    <h2>{{ block.caseStudy.one.title }}</h2>
+                    {# <div class="case-study__text">
+                        {{ block.caseStudy.one.sibText }}
+                    </div> #}
+
+                    <a href="{{ block.sibLink.url }}"{% if block.sibLink.target %} target="_blank"{% endif %}>
+                        {{ block.sibLink.text }}
+                        <span class="icon-arrow-down"></span>
+                    </a>
+                </div>
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-md-6',
+                gridSide: 'left',
+                gridType: 'background',
+                gridColor: block.background.one.colorClass,
+                gridContent: gridContent
+            } %}
+
+        </div>
+
+    </div>
+</section>

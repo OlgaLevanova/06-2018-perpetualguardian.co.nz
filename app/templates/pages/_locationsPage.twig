@@ -1,0 +1,13 @@
+{% set locationsAll = craft.entries.section('locationsPage').one() %}
+{% set regions = locationsAll.children().level(2).all() %}
+
+{# Regions filter #}
+{% include 'partials/_sib-filter' with {
+    items: regions,
+    gridClasses: 'col-lg-6 col-xl-6',
+    buttonClasses: 'col-md-6',
+    filterType: 'scroll'
+} %}
+
+{# Locations #}
+{% include 'sections/_sib-locations' %}

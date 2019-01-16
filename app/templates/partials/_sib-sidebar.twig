@@ -1,0 +1,20 @@
+<div class="sib-sidebar {{ entry.heroImage is defined and entry.heroImage|length ? '' : 'no-image'}}">
+
+    <div class="container">
+        <div class="row">
+            {% set gridContent %}
+                {% include 'partials/_sib-sidemenu' %}
+                {% include 'partials/_sib-testimonial' %}
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-lg-3',
+                gridSide: 'left',
+                gridType: 'background',
+                gridColor: '',
+                gridContent: gridContent
+            } %}
+        </div>
+    </div>
+
+</div>

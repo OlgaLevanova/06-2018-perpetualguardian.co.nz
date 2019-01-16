@@ -1,0 +1,46 @@
+{% set showButton = false %}
+{% if not block.button.one.hideButton and (block.button.one.openFaqPage or block.faq|length > 5) %}
+    {% set showButton = true %}
+{% endif %}
+
+{% set allFAQ = true %}
+{% if not block.button.one.hideButton and not block.button.one.openFaqPage and block.faq|length > 5 %}
+    {% set allFAQ = false %}
+{% endif %}
+
+<section class="sib-faq-block" data-anchor="FAQ">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-1 offset-lg-3 background-pg-color-grey"></div>
+
+            {% set gridContent %}
+                <h2>Frequently asked questions</h2>
+
+                {% include 'partials/_sib-faq' with {
+                    faqList: block.faq,
+                    dataFaq: '0'
+                } %}
+            {% endset %}
+
+            {% include 'partials/_sib-pg-grid-element' with {
+                gridClasses: 'col-lg-8',
+                gridSide: 'right',
+                gridType: 'background',
+                gridColor: 'pg-color-grey',
+                gridContent: gridContent
+            } %}
+
+        </div>
+
+        {% if showButton %}
+            {% include 'partials/_sib-faq-button' with {
+                openFaqPage: block.button.one.openFaqPage,
+                faqList: block.faq,
+                dataFaq: '0'
+            } %}
+        {% endif %}
+
+    </div>
+</section>

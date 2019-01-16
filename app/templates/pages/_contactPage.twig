@@ -1,0 +1,69 @@
+{% extends "_layout" %}
+
+{% block content %}
+    {% set formErrors = [] %}
+    {% if guestFormErrors is defined %}
+        {% for key,error in guestFormErrors.errors %}
+            {% set formErrors = formErrors|merge({ (key): error[0] }) %}
+        {% endfor %}
+    {% endif %}
+    <div class="sib-contact">
+
+        <div class="container">
+            <form class="sib-form sib-contact__form scroll-reveal" method="post" action="" accept-charset="UTF-8" novalidate
+                  id="contact-form">
+            <div class="row">
+
+                    {{ csrfInput() }}
+                    <input type="hidden" name="action" value="guest-entries/save">
+                    <input type="hidden" name="sectionId" value="25">
+                    {{ redirectInput('contact/thanks') }}
+
+                {% set gridContent %}
+                    {% include 'partials/_sib-contact-mainform' %}
+                {% endset %}
+
+                {% include 'partials/_sib-pg-grid-element' with {
+                    gridClasses: 'col-lg-7 sib-contact__mainform',
+                    gridSide: 'left',
+                    gridType: 'background',
+                    gridColor: 'pg-color-grey',
+                    gridContent: gridContent
+                } %}
+
+                <div class="d-none d-lg-block col-lg-2 background-pg-color-grey">
+                </div>
+
+                {% set gridContent %}
+                    {% include 'partials/_sib-contact-datepicker' %}
+                {% endset %}
+
+                {% include 'partials/_sib-pg-grid-element' with {
+                    gridClasses: 'col-md-5 col-lg-3 sib-datepicker__wrapper',
+                    gridSide: 'right',
+                    gridType: 'background',
+                    gridColor: '',
+                    gridContent: gridContent
+                } %}
+
+                {% set gridContent %}
+                    <button type="submit" class="sib-form__button">
+                        <span>Submit</span>
+                        <span class="icon-arrow-down"></span>
+                    </button>
+                {% endset %}
+
+                {% include 'partials/_sib-pg-grid-element' with {
+                    gridClasses: 'offset-lg-3 col-lg-6 col-pg-color-grey col-pg-no-padding sib-contact__offset-button',
+                    gridSide: 'left',
+                    gridType: 'background',
+                    gridColor: 'col-pg-color-grey',
+                    gridContent: gridContent
+                } %}
+
+
+            </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

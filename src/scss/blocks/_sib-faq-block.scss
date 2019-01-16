@@ -1,0 +1,49 @@
+.sib-faq-block{
+    color:$grey;
+    line-height:1.75;
+
+    @media (max-width:$lg-breakpoint){
+        margin-left:rem(20);
+    }
+    .col-gap{
+        display:none;
+
+        @media (min-width:$lg-breakpoint){
+            display:block;
+        }
+    }
+    .col-pg-right{
+        @media (max-width:$lg-breakpoint){
+            padding-right:rem(20);
+            padding-left:rem(20);
+        }
+
+        &:before{
+            @media (max-width:$lg-breakpoint){
+                display:none !important;
+            }
+        }
+    }
+    h2{
+        padding:rem(90) 0 rem(30);
+        color:$color-pg-1;
+        font-family:$font-secondary-300-italic;
+        font-size:rem(28);
+        font-style:italic;
+        line-height:1.29;
+
+        @media (min-width:$lg-breakpoint){
+            padding:rem(90) 0 rem(40);
+        }
+    }
+    ul{
+        @media (max-width:$lg-breakpoint){
+            padding-right:0;
+        }
+    }
+    .faq__more{
+        @media (max-width:$lg-breakpoint){
+            padding-right:rem(20) !important;
+        }
+    }
+}

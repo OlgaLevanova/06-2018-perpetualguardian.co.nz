@@ -1,0 +1,13 @@
+.page-cms-resourceslistingpage{
+    .sib-news-list{
+        .row{
+            &.sib-news-list__listing{
+                padding-top:rem(20);
+
+                @media (min-width:$md-breakpoint){
+                    padding-top:rem(50);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,79 @@
+/* Fonts */
+$font-path: '/fonts/';
+$font-default: Helvetica, Arial, sans-serif;
+
+// all variations of the fonts  -- font weight
+//$font-primary-100: 'Roboto-ExtraLight', $font-default; // 100
+$font-primary-300: 'Roboto-Light', $font-default; // 300
+$font-primary-300-italic: 'Roboto-LightItalic', $font-default; // 300
+$font-primary-400: 'Roboto-Regular', $font-default; // normal
+$font-primary-400-italic: 'Roboto-Italic', $font-default; // normal
+//$font-primary-500: 'Roboto-Medium', $font-default; // 500
+//$font-primary-600: 'Roboto-SemiBold', $font-default; // 600
+$font-primary-700: 'Roboto-Bold', $font-default; // 700
+//$font-primary-900: 'Roboto-Heavy', $font-default; // 900
+
+$font-secondary-300-italic: Merriweather-LightItalic, $font-default;
+$font-secondary-400: Merriweather-Regular, $font-default;
+$font-secondary-400-italic: Merriweather-Italic, $font-default;
+$font-secondary-900-italic: Merriweather-BlackItalic, $font-default;
+
+/* Colours */
+$black: #000000;
+$white: #FFFFFF;
+$azure:#00A5E5;
+$greeny-blue:#39BB9D;
+$orangey-yellow:#FCAF17;
+$warm-grey:#808080;
+$blue:#00769A;
+$teal:#0097A6;
+$orange:#C56011;
+
+$blue-hover:#137597;
+
+$grey:#524F4F;
+$grey-2:#F9F9F9;
+$grey-3:#ECECEC;
+$grey-4:#D2D2D2;
+$grey-5:#F6F6F6;
+
+$color-pg-1:$azure;
+$color-pg-2:$greeny-blue;
+$color-pg-3:$orangey-yellow;
+
+/* Typography */
+$heading-font-family: $font-primary-300;
+$base-font-family: $font-primary-300;
+$base-font-size: 16;
+$base-line-height: 1.75;
+$base-color: $grey;
+
+/* Breakpoints */
+/* Take new breakpoints as map from Bootstrap 4 */
+/*$space-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+);*/
+$xs-breakpoint: 0;
+$sm-breakpoint: 576px;
+$md-breakpoint: 768px;
+$lg-breakpoint: 992px;
+$xl-breakpoint: 1200px;
+$xxl-breakpoint: 1800px;
+
+$nav-bar-height:100;
+$nav-bar-breakpoint:1420px;
+$nav-bar-xl-breakpoint:1150px;
+$footer-lg-breakpoint:$lg-breakpoint;
+$footer-xl-breakpoint:1400px;
+
+$container-max-widths-xl: 1470px;
+$container-max-widths-breakpoint: 1520px;
+
+$grid-container-gutter-width-sm:20px;
+$grid-container-gutter-width-lg:40px;
+
+$side-menu-width:380px;

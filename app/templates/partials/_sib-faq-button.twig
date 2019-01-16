@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="faq__more col-lg-3 offset-lg-3 background-pg-color-grey">
+        <div class="faq__more__container">
+            {% if openFaqPage or faqList|length > 5 %}
+                {% if openFaqPage %}
+                    <a class="faq__more__link" href="{{ craft.entries.id(7).one.url }}">{{ craft.entries.id(7).one.buttonText }}</a>
+                {% else %}
+                    <span class="faq__more__link" data-faq-button="id-{{ dataFaq }}">{{ craft.entries.id(7).one.buttonText }}</span>
+                {% endif %}
+                <span class="icon-arrow-down{% if openFaqPage %} icon-arrow-down--right{% endif %}"></span>
+            {% else %}
+                <span class="faq__more__link">Next</span>
+                <span class="icon-arrow-down icon-arrow-down--right"></span>
+            {% endif %}
+        </div>
+        <button type="button" class="sib-form__button close-js">
+            <span>Submit</span>
+            <span class="icon-arrow-down"></span>
+        </button>
+    </div>
+
+    {% include 'partials/_sib-pg-grid-element' with {
+        gridClasses: 'col-lg-6 col-gap',
+        gridSide: 'right',
+        gridType: 'background',
+        gridColor: 'pg-color-grey',
+        gridContent: ''
+    } %}
+</div>
